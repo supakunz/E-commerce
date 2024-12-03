@@ -1,164 +1,164 @@
-.select{
-  @apply bg-black text-white
+.select {
+  @apply !bg-black text-white;
 }
-@media(max-width:1280px){
-  .productdisplay{
-    @apply mx-[60px]
+@media (max-width: 1280px) {
+  .productdisplay {
+    @apply mx-[60px];
   }
-  .productdisplay-left{
-    @apply gap-[10px]
+  .productdisplay-left {
+    @apply gap-[10px];
   }
-  .productdisplay-img-list{
-    @apply gap-[10px]
+  .productdisplay-img-list {
+    @apply gap-[10px];
   }
-  .productdisplay-img-list img{
-    @apply h-[120px]
+  .productdisplay-img-list img {
+    @apply h-[120px];
   }
-  .productdisplay-main-img{
-    @apply w-auto h-[510px]
+  .productdisplay-main-img {
+    @apply w-auto h-[510px];
   }
-  .productdisplay-right{
-    @apply mx-[30px]
+  .productdisplay-right {
+    @apply mx-[30px];
   }
-  .productdisplay-right h1{
-    @apply text-[22px]
+  .productdisplay-right h1 {
+    @apply text-[22px];
   }
-  .productdisplay-right-stars{
-    @apply gap-[3px] text-[13px]
+  .productdisplay-right-stars {
+    @apply gap-[3px] text-[13px];
   }
-  .productdisplay-right-prices{
-    @apply my-[10px] text-[18px]
+  .productdisplay-right-prices {
+    @apply my-[10px] text-[18px];
   }
-  .productdisplay-right-description{
-    @apply text-[13px]
+  .productdisplay-right-description {
+    @apply text-[13px];
   }
-  .productdisplay-right-size h1{
-    @apply mt-[20px] text-[20px]
+  .productdisplay-right-size h1 {
+    @apply mt-[20px] text-[20px];
   }
-  .productdisplay-right-size div{
-    @apply p-[14px_20px]
+  .productdisplay-right-size div {
+    @apply p-[14px_20px];
   }
-  .productdisplay-right button{
-    @apply w-[158px] py-[18px] mb-[20px] text-[12px]
+  .productdisplay-right button {
+    @apply w-[158px] py-[18px] mb-[20px] text-[12px];
   }
-  .productdisplay-right-category{
-    @apply mt-[5px] text-[14px]
-  }
-}
-
-@media(max-width:1024px){
-  .productdisplay{
-    @apply mx-[30px]
-  }
-  .productdisplay-left{
-    @apply gap-[5px]
-  }
-  .productdisplay-img-list img{
-    @apply h-[80px]
-  }
-  .productdisplay-main-img{
-    @apply h-[350px]
-  }
-  .productdisplay-right h1{
-    @apply text-[18px]
-  }
-  .productdisplay-right-stars img{
-    @apply w-[15px]
-  }
-  .productdisplay-right-description{
-    @apply text-[12px]
-  }
-  .productdisplay-right-sizes{
-    @apply mt-[10px]
-  }
-  .productdisplay-right-size div{
-    @apply p-[10px_16px] text-[12px]
-  }
-  .productdisplay-right button{
-    @apply w-[140px] py-[14px] mb-[10px] text-[9.5px]
-  }
-  .productdisplay-right-category{
-    @apply text-[12px]
+  .productdisplay-right-category {
+    @apply mt-[5px] text-[14px];
   }
 }
 
-@media(max-width:800px){
-  .productdisplay{
-    @apply mx-[10px]
+@media (max-width: 1024px) {
+  .productdisplay {
+    @apply mx-[30px];
   }
-  .productdisplay-left{
-    @apply flex-col-reverse items-center
+  .productdisplay-left {
+    @apply gap-[5px];
   }
-  .productdisplay-img-list{
-    @apply flex-row gap-[8px] 
+  .productdisplay-img-list img {
+    @apply h-[80px];
   }
-  .productdisplay-img-list img{
-    @apply h-[70px]
+  .productdisplay-main-img {
+    @apply h-[350px];
   }
-  .productdisplay-main-img{
-    @apply h-[310px]
+  .productdisplay-right h1 {
+    @apply text-[18px];
   }
-  .productdisplay-right h1{
-    @apply text-[14px]
+  .productdisplay-right-stars img {
+    @apply w-[15px];
   }
-  .productdisplay-right-stars img{
-    @apply w-[13px]
+  .productdisplay-right-description {
+    @apply text-[12px];
   }
-  .productdisplay-right-description{
-    @apply text-[10px]
+  .productdisplay-right-sizes {
+    @apply mt-[10px];
   }
-  .productdisplay-right-sizes{
-    @apply mt-[10px] gap-[5px]
+  .productdisplay-right-size div {
+    @apply p-[10px_16px] text-[12px];
   }
-  .productdisplay-right-sizes h1{
-    @apply mt-[10px]
+  .productdisplay-right button {
+    @apply w-[140px] py-[14px] mb-[10px] text-[9.5px];
   }
-  .productdisplay-right-size div{
-    @apply p-[4px_11px]
-  }
-  .productdisplay-right button{
-    @apply w-[105px] p-[12px_25px]  text-[8px]
-  }
-  .productdisplay-right-category{
-    @apply text-[10px]
+  .productdisplay-right-category {
+    @apply text-[12px];
   }
 }
 
-@media(max-width:500px){
-  .productdisplay{
-    @apply flex-col
+@media (max-width: 800px) {
+  .productdisplay {
+    @apply mx-[10px];
   }
-  .productdisplay-left{
-    @apply gap-[10px] flex-row m-auto
+  .productdisplay-left {
+    @apply flex-col-reverse items-center;
   }
-  .productdisplay-img-list{
-    @apply flex-col gap-[8px]
+  .productdisplay-img-list {
+    @apply flex-row gap-[8px];
   }
-  .productdisplay-img-list img{
-    @apply h-[75px]
+  .productdisplay-img-list img {
+    @apply h-[70px];
   }
-  .productdisplay-main-img{
-    @apply h-[330px]
+  .productdisplay-main-img {
+    @apply h-[310px];
   }
-  .productdisplay-right{
-    @apply m-[5px]
+  .productdisplay-right h1 {
+    @apply text-[14px];
   }
-  .productdisplay-right h1{
-    @apply mt-[15px] text-[19px] font-medium
+  .productdisplay-right-stars img {
+    @apply w-[13px];
   }
-  .productdisplay-right-stars img{
-    @apply w-[15px]
+  .productdisplay-right-description {
+    @apply text-[10px];
   }
-  .productdisplay-right-size{
-    @apply gap-[10px] my-[20px]
+  .productdisplay-right-sizes {
+    @apply mt-[10px] gap-[5px];
   }
-  .productdisplay-right-size div{
-    @apply p-[10px_16px] text-[14px]
+  .productdisplay-right-sizes h1 {
+    @apply mt-[10px];
   }
-  .productdisplay-right button{
-    @apply w-[138px] text-[10px]
+  .productdisplay-right-size div {
+    @apply p-[4px_11px];
   }
-  .productdisplay-right-category{
-    @apply text-[14px]
+  .productdisplay-right button {
+    @apply w-[105px] p-[12px_25px]  text-[8px];
+  }
+  .productdisplay-right-category {
+    @apply text-[10px];
+  }
+}
+
+@media (max-width: 500px) {
+  .productdisplay {
+    @apply flex-col;
+  }
+  .productdisplay-left {
+    @apply gap-[10px] flex-row m-auto;
+  }
+  .productdisplay-img-list {
+    @apply flex-col gap-[8px];
+  }
+  .productdisplay-img-list img {
+    @apply h-[75px];
+  }
+  .productdisplay-main-img {
+    @apply h-[330px];
+  }
+  .productdisplay-right {
+    @apply m-[5px];
+  }
+  .productdisplay-right h1 {
+    @apply mt-[15px] text-[19px] font-medium;
+  }
+  .productdisplay-right-stars img {
+    @apply w-[15px];
+  }
+  .productdisplay-right-size {
+    @apply gap-[10px] my-[20px];
+  }
+  .productdisplay-right-size div {
+    @apply p-[10px_16px] text-[14px];
+  }
+  .productdisplay-right button {
+    @apply w-[138px] text-[10px];
+  }
+  .productdisplay-right-category {
+    @apply text-[14px];
   }
 }

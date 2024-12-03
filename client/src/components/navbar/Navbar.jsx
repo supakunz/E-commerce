@@ -1,12 +1,15 @@
-import React, { useContext, useRef, useState } from "react";
 import "./navbar.css";
+import { useContext, useRef, useState } from "react";
 import cart_icon from "../assets/cart_icon.png";
 import nav_dropdown from "../assets/nav_dropdown.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext";
+import { useAuth } from "../../context/AuthProvider";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
+  const { logout } = useAuth();
+  const navigate = useNavigate();
   const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
 
@@ -75,7 +78,8 @@ const Navbar = () => {
           <button
             onClick={() => {
               localStorage.removeItem("auth-token");
-              window.location.replace("/");
+              logout();
+              navigate("/");
             }}
             className="w-[95px] bg-black h-[42px] outline-none rounded-[75px] text-[16px] text-white font-medium"
           >

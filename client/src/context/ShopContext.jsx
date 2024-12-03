@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { createContext, useEffect, useState } from "react";
 import all_product from "../components/assets/all_product"; // ** All product **
 
 // create useContext
@@ -39,6 +40,7 @@ const ShopContextProvider = (props) => {
         .then((req) => req.json())
         .then((data) => setCartItems(data));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Function เพิ่มลบของลงในตะกร้า

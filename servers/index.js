@@ -93,7 +93,7 @@ app.post('/singup', async (req, res) => {
     // เช็ตว่าใน database มีข้อมู email นี้ไหม 
     let check = await UserSchema.findOne({ email: req.body.email })
     if (check) {
-      return res.status(400).json({ suscess: false, errors: "Existing user found with same email address" })
+      return res.status(400).json({ suscess: false, errors: "Duplicate email address." })
     }
     let cart = {}
     for (let i = 0; i < 300; i++) {
@@ -110,15 +110,16 @@ app.post('/singup', async (req, res) => {
 
     const data = {
       user: {
-        id: user.id
+        id: user.id,
+        role: user.role
       }
     }
 
     // ** use Json Web Token **
-    const token = jwt.sign(data, 'secret_ecom');
+    const token = jwt.sign(data, 'secret_ecom',{expiresIn:'1h'});
     res.json({ success: true, token })
   } catch (error) {
-    res.json({ success: "Failed Registering", status: error })
+    res.json({ success: "Failed Registering.", status: error })
   }
 })
 
@@ -130,18 +131,19 @@ app.post('/login', async (req, res) => {
     if (passCompare) {
       const data = {
         user: {
-          id: user.id
+          id: user.id,
+          role: user.role
         }
       }
-      const token = jwt.sign(data, 'secret_ecom') // 3. ส่ง Token กลับไป
+      const token = jwt.sign(data, 'secret_ecom',{expiresIn:'1h'}) // 3. ส่ง Token กลับไป
       res.json({ success: true, token })
     }
     else {
-      res.json({ suscess: false, errors: "Wrong Password" })
+      res.json({ suscess: false, errors: "Invalid password please try again." })
     }
   }
   else {
-    res.json({ suscess: false, errors: "Wrong Email" })
+    res.json({ suscess: false, errors: "Invalid email please try again." })
   }
 })
 

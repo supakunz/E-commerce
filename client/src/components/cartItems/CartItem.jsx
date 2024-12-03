@@ -1,4 +1,6 @@
-import React, { useContext, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/jsx-key */
+import { useContext, useEffect } from "react";
 import { ShopContext } from "../../context/ShopContext";
 import remove_icon from "../assets/cart_cross_icon.png";
 import "./cartitem.css";

@@ -10,8 +10,9 @@ const UserSchema = mongoose.Schema({
   password: {
     type: String
   },
-  cartData: {
-    type: Object
+  role: {
+    type: String,
+    default:"user"
   },
   Date: {
     type: Date,
