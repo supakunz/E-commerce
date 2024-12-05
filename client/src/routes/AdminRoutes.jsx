@@ -6,6 +6,7 @@ import ListProduct from "../admin/listProduct/ListProduct";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import jwtDecode from "jwt-decode";
+import Details from "../admin/details/Details";
 
 function AdminRoutes() {
   const { isAuthenticated } = useAuth(); // ตรวจสอบสิทธิ์
@@ -42,11 +43,14 @@ function AdminRoutes() {
 
   return (
     <AdminLayout>
-      <div className="flex flex-col md:flex-row bg-[#F6F6F6] h-screen">
+      <div className="flex flex-col md:flex-row bg-[#F6F6F6] min-h-[89vh]">
         <Sidebar />
         <Routes>
           <Route path="/addproduct" element={<AddProduct />} />
-          <Route path="/listproduct" element={<ListProduct />} />
+          <Route path="/listproduct">
+            <Route path="/listproduct" element={<ListProduct />} />
+            <Route path=":id" element={<Details />} />
+          </Route>
           {/* เพิ่มเส้นทางอื่นๆ ที่ Admin เข้าถึงได้ */}
         </Routes>
       </div>

@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import cross_icon from "../../components/assets/admin/cross_icon.png";
 import "./listproduct.css";
+import { Link } from "react-router-dom";
 
 const ListProduct = () => {
   const [allproducts, setAllproducts] = useState([]);
@@ -15,32 +16,14 @@ const ListProduct = () => {
       });
   };
 
-  const remove_product = async (id) => {
-    try {
-      await fetch("http://localhost:4000/removeproduct", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: id }),
-      });
-      await fectInfo();
-    } catch (error) {
-      alert("Delete Faild");
-    }
-  };
-
   useEffect(() => {
     fectInfo();
   }, []);
 
-  // console.log(allproducts)
-
   return (
     <>
-      <div className="list-product flex flex-col items-center w-full h-[740px] p-[10px_50px] m-[30px] rounded-[6px] bg-white">
-        <h1>All Products List</h1>
+      <div className="list-product flex flex-col items-center w-full h-full p-[10px_50px] m-[30px] rounded-[6px] bg-white">
+        <h1 className="p-4">All Products List</h1>
         <div className="listproduct-format-main grid grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr] text-[15px] font-medium gap-[10px] w-full py-[20px] text-[#454545]">
           <p>Produsts</p>
           <p>Title</p>
@@ -49,7 +32,7 @@ const ListProduct = () => {
           <p>Category</p>
           <p>Remove</p>
         </div>
-        <div className="listproduct-allproducts w-full overflow-y-auto">
+        <div className="listproduct-allproducts w-full overflow-y-auto max-h-[64vh]">
           <hr />
           {allproducts.map((product, index) => {
             return (
@@ -67,12 +50,15 @@ const ListProduct = () => {
                   <p>${product.old_price}</p>
                   <p>${product.new_price}</p>
                   <p>{product.category}</p>
-                  <img
+                  <Link to={`${product.id}`}>
+                    <p className="cursor-pointer">details</p>
+                  </Link>
+                  {/* <img
                     onClick={(e) => remove_product(product.id)}
                     className="listproduct-remove-icon cursor-pointer m-auto"
                     src={cross_icon}
                     alt=""
-                  />
+                  /> */}
                 </div>
                 <hr />
               </>

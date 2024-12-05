@@ -117,7 +117,7 @@ const AddProduct = () => {
             <option value="women">Kid</option>
           </select>
         </div>
-        <div className="addproduct-itemfield w-full text-[#7b7b7b] text-[16px]">
+        <div className="addproduct-itemfield w-fit text-[#7b7b7b] text-[16px]">
           <label htmlFor="file-input">
             <img
               src={image ? URL.createObjectURL(image) : upload_area}

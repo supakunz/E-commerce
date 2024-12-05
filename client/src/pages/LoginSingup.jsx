@@ -8,6 +8,28 @@ import { toast } from "react-toastify";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import "./css/loginsingup.css";
+import Input from "../components/common/Input";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const loginSchema = z.object({
+  username: z
+    .string()
+    .min(3, "Username must contain at least 3 character(s)")
+    .max(20, "Username must be no more than 20 characters(s)")
+    .regex(/^[a-zA-Z0-9]+$/, {
+      // อนุญาตเฉพาะตัวอักษรและตัวเลข
+      message: "Username must not contain special characters",
+    })
+    .optional(),
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(7)
+    .regex(/^[a-zA-Z0-9_-]+$/, {
+      message: "Password can contain only letters, numbers, _ and -",
+    }),
+});
 
 const LoginSingup = () => {
   const [state, setState] = useState("Login");
@@ -17,7 +39,14 @@ const LoginSingup = () => {
   const URL = import.meta.env.VITE_APP_API;
 
   // วิธีเก็บค่าจาก Form --> 1. useForm to easy
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+  });
 
   // วิธีเก็บค่าจาก Form --> 2. วิธีปกติ
   // const [formData, setFormData] = useState({
@@ -100,11 +129,9 @@ const LoginSingup = () => {
       });
   };
 
-  // console.log(responseData)
-
   return (
     <div className="loginsignup w-[100%] bg-[#999] py-[60px]">
-      <div className="loginsignup-container w-[580px] h-[600px] bg-white m-auto p-[32px_60px]">
+      <div className="loginsignup-container w-[580px] min-h-[600px] bg-white m-auto p-[32px_60px]">
         <h1 className="text-[30px] font-medium mt-[15px]">{state}</h1>
         <form
           onSubmit={
@@ -114,33 +141,27 @@ const LoginSingup = () => {
         >
           <div className="loginsignup-fields flex flex-col gap-[29px] mt-[30px]">
             {state === "Sing Up" ? (
-              <input
-                onChange={() => changeHandler}
-                {...register("username")}
-                className="h-[62px] w-[100%] pl-[20px] outline-none text-[16px] text-[#5c5c5c] border-solid border-[1px] border-[#c9c9c9]"
-                name="username"
-                type="text"
-                placeholder="Your Name"
-                required
+              <Input
+                name={"username"}
+                type={"text"}
+                placeholder={"Your Name"}
+                register={register}
+                error={errors?.username?.message}
               />
             ) : null}
-            <input
-              onChange={() => changeHandler}
-              {...register("email")}
-              className="h-[62px] w-[100%] pl-[20px] outline-none text-[16px] text-[#5c5c5c] border-solid border-[1px] border-[#c9c9c9]"
-              name="email"
-              type="email"
-              placeholder="Email Address"
-              required
+            <Input
+              name={"email"}
+              // type={"email"}
+              placeholder={"Email Address"}
+              register={register}
+              error={errors?.email?.message}
             />
-            <input
-              onChange={() => changeHandler}
-              {...register("password")}
-              className="h-[62px] w-[100%] pl-[20px] outline-none text-[16px] text-[#5c5c5c] border-solid border-[1px] border-[#c9c9c9]"
-              name="password"
-              type="password"
-              placeholder="Password"
-              required
+            <Input
+              name={"password"}
+              type={"password"}
+              placeholder={"Password"}
+              register={register}
+              error={errors?.password?.message}
             />
           </div>
           <button
@@ -182,7 +203,7 @@ const LoginSingup = () => {
         )}
         {state === "Sing Up" ? (
           <div className="loginsignup-agree flex items-center my-[20px] gap-[20px] text-[#5c5c5c] text-[14px] font-medium">
-            <input type="checkbox" name="" id="" required />
+            <input type="checkbox" name="checkbox" required />
             <p>By continuing, i agree to the terms of use & privacy policy.</p>
           </div>
         ) : null}

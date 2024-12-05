@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
+    "@hookform/resolvers": "^3.9.1",
     "axios": "^1.7.3",
     "jwt-decode": "^3.1.2",
     "react": "^18.3.1",
@@ -20,7 +21,9 @@
     "react-router-dom": "^6.25.1",
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.6",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.6.13",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
