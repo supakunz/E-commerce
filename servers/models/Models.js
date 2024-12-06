@@ -13,6 +13,10 @@ const ProductShcema = mongoose.Schema({
     type: String,
     required: true
   },
+  image_id: {
+    type: String,
+    // required: true
+  },
   category: {
     type: String,
     required: true
