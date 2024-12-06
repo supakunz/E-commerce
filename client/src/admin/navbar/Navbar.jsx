@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import navlogo from "../../components/assets/admin/nav-logo.svg";
 import { useAuth } from "../../context/AuthProvider";
 import "./navbar.css";
@@ -9,7 +9,9 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar flex items-center justify-between mb-[1px] bg-white p-[15px_60px] shadow-[0px_1px_3px_-2px_#000]">
-        <img className="nav-logo w-[200px]" src={navlogo} alt="" />
+        <Link to={"/"}>
+          <img className="nav-logo w-[200px]" src={navlogo} alt="" />
+        </Link>
         <button
           onClick={() => {
             localStorage.removeItem("auth-token");

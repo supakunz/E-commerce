@@ -86,7 +86,12 @@ const LoginSingup = () => {
           localStorage.setItem("auth-token", response.token); // save token ที่ส่งมาลง ใน localStorage ของ clien
           reset();
           login(); // อัปเดตสถานะเป็นล็อกอิน
-          navigate("/"); // กลับไปหน้า honme
+          const token = localStorage.getItem("auth-token");
+          const decoded = jwtDecode(token);
+          if (decoded.user.role == "admin") {
+            return navigate("/admin"); // เปลี่ยนเส้นทางไปยังแดชบอร์ด
+          }
+          navigate("/");
         }
       })
       .catch((err) => {
