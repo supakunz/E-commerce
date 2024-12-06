@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import upload_area from "../../components/assets/admin/upload_area.svg";
 import "./addproduct.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { ShopContext } from "../../context/ShopContext";
 
 const AddProduct = () => {
   const [image, setImage] = useState(false);
+  const { getAllProduct } = useContext(ShopContext); // เรียกใช้ data ใน
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "/products/noimage.jpg",
@@ -59,6 +61,7 @@ const AddProduct = () => {
           old_price: "",
         });
         setImage(false);
+        getAllProduct();
       })
       .catch((err) => {
         console.log(err);
@@ -91,7 +94,7 @@ const AddProduct = () => {
         </div>
         <div className="addproduct-price flex gap-[40px]">
           <div className="addproduct-itemfield flex flex-col gap-3 mt-3 w-full text-[#7b7b7b] text-[16px]">
-            <p>Price</p>
+            <p>Old Price</p>
             <input
               className="box-border w-full h-[50px] rounded-[4px] pl-[15px] border-solid border-[1px] text-[14px] border-[#c3c3c3] text-[#7b7b7b]"
               onChange={changeHandler}
@@ -102,7 +105,7 @@ const AddProduct = () => {
             />
           </div>
           <div className="addproduct-itemfield w-full flex flex-col mt-3 gap-3 text-[#7b7b7b] text-[16px]">
-            <p>Offer Price</p>
+            <p>New Price</p>
             <input
               className="box-border w-full h-[50px] rounded-[4px] pl-[15px] border-solid border-[1px] text-[14px] border-[#c3c3c3] text-[#7b7b7b]"
               onChange={changeHandler}

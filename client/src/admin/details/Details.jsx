@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import upload_area from "../../components/assets/admin/upload_area.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./details.css";
+import { ShopContext } from "../../context/ShopContext";
 
 const Details = () => {
   const [image, setImage] = useState(false);
+  const { getAllProduct } = useContext(ShopContext); // เรียกใช้ data ใน
   const { id } = useParams();
   const navigate = useNavigate();
   const [productDetails, setProductDetails] = useState({
@@ -69,6 +71,7 @@ const Details = () => {
             console.log(data);
             Swal.close();
             Swal.fire("Saved!", "", "success");
+            getAllProduct();
           })
           .catch((err) => {
             console.log(err);
@@ -120,6 +123,7 @@ const Details = () => {
               text: "Your file has been deleted.",
               icon: "success",
             });
+            getAllProduct();
             navigate(-1);
           })
           .catch((err) => {
@@ -170,7 +174,7 @@ const Details = () => {
         </div>
         <div className="addproduct-price flex gap-[40px]">
           <div className="addproduct-itemfield flex flex-col gap-3 mt-3 w-full text-[#7b7b7b] text-[16px]">
-            <p>Price</p>
+            <p>Old Price</p>
             <input
               className="box-border w-full h-[50px] rounded-[4px] pl-[15px] border-solid border-[1px] text-[14px] border-[#c3c3c3] text-[#7b7b7b]"
               onChange={changeHandler}
@@ -181,7 +185,7 @@ const Details = () => {
             />
           </div>
           <div className="addproduct-itemfield w-full flex flex-col mt-3 gap-3 text-[#7b7b7b] text-[16px]">
-            <p>Offer Price</p>
+            <p>New Price</p>
             <input
               className="box-border w-full h-[50px] rounded-[4px] pl-[15px] border-solid border-[1px] text-[14px] border-[#c3c3c3] text-[#7b7b7b]"
               onChange={changeHandler}

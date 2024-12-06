@@ -1,26 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import "./listproduct.css";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../../context/ShopContext";
 
 const ListProduct = () => {
-  const [allproducts, setAllproducts] = useState([]);
-
-  const URL = import.meta.env.VITE_APP_API;
-
-  const fectInfo = async () => {
-    await fetch(`${URL}/api/products`)
-      .then((resq) => resq.json())
-      .then((data) => {
-        setAllproducts(data);
-        console.log(allproducts);
-        console.log(data);
-      });
-  };
-
-  useEffect(() => {
-    fectInfo();
-  }, []);
+  const { all_product } = useContext(ShopContext); // เรียกใช้ data ใน
 
   return (
     <>
@@ -36,7 +21,7 @@ const ListProduct = () => {
         </div>
         <div className="listproduct-allproducts w-full overflow-y-auto max-h-[64vh]">
           <hr />
-          {allproducts.map((product, index) => {
+          {all_product.map((product, index) => {
             return (
               <>
                 <div

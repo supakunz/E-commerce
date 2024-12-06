@@ -1,24 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import "./customers.css";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../../context/ShopContext";
 
 const Customers = () => {
-  const [allusers, setAllusers] = useState([]);
-  const URL = import.meta.env.VITE_APP_API;
-
-  const fectInfo = async () => {
-    await fetch(`${URL}/api/users`)
-      .then((resq) => resq.json())
-      .then((data) => {
-        setAllusers(data);
-        console.log(allusers);
-        console.log(data);
-      });
-  };
+  const { getAllUsers, allusers } = useContext(ShopContext); // เรียกใช้ data ใน
 
   useEffect(() => {
-    fectInfo();
+    getAllUsers();
   }, []);
 
   return (

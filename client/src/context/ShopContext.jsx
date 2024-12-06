@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
-import all_product from "../components/assets/all_product"; // ** All product **
+// import all_product from "../components/assets/all_product"; // ** All product **
 
 // create useContext
 export const ShopContext = createContext(null); // ชื่อ Stones ที่จะเรียกใช้
@@ -19,14 +20,28 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [cartTotal, setCartTotal] = useState(0);
   const URL = import.meta.env.VITE_APP_API;
+  const [all_product, setAll_product] = useState([]);
+  const [allusers, setAllusers] = useState([]);
 
-  // const [all_product, setAll_product] = useState([])
+  const getAllProduct = async () => {
+    await fetch(`${URL}/api/products`)
+      .then((res) => res.json())
+      .then((data) => setAll_product(data));
+  };
+
+  const getAllUsers = async () => {
+    await fetch(`${URL}/api/users`)
+      .then((resq) => resq.json())
+      .then((data) => {
+        setAllusers(data);
+      });
+  };
 
   useEffect(() => {
-    // fetch(`${URL}/allproducts`)
-    //   .then(res => res.json())
-    //   .then(data => setAll_product(data))
+    getAllProduct();
+  }, []);
 
+  useEffect(() => {
     if (localStorage.getItem("auth-token")) {
       fetch(`${URL}/getcart`, {
         method: "POST",
@@ -120,6 +135,11 @@ const ShopContextProvider = (props) => {
     addToCart,
     removeFromCart,
     getTotalCartAmount,
+    setAll_product,
+    getAllProduct,
+    getAllUsers,
+    allusers,
+    setAllusers,
   }; // all_product data
 
   // console.log(addToCart(1))

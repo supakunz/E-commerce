@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { ShopContext } from "../../context/ShopContext";
 // import "./details.css";
 
 const CustomerEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { getAllUsers } = useContext(ShopContext); // เรียกใช้ data ใน
   const [usersDetails, setusersDetails] = useState({
     name: "",
     email: "",
@@ -64,6 +66,7 @@ const CustomerEdit = () => {
             console.log(data);
             Swal.close();
             Swal.fire("Saved!", "", "success");
+            getAllUsers();
           })
           .catch((err) => {
             console.log(err);
@@ -115,6 +118,7 @@ const CustomerEdit = () => {
               text: "Your file has been deleted.",
               icon: "success",
             });
+            getAllUsers();
             navigate(-1);
           })
           .catch((err) => {

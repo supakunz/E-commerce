@@ -21,7 +21,6 @@ const ShopCategory = (props) => {
     );
     const arry = total.slice(0, explore);
     setShowing(arry.length);
-    // console.log(arry)
   }, [props, explore]);
 
   return (
