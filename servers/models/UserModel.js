@@ -12,7 +12,7 @@ const UserSchema = mongoose.Schema({
   },
   role: {
     type: String,
-    default:"user"
+    default:"admin"
   },
   Date: {
     type: Date,

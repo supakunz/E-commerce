@@ -1,6 +1,7 @@
 import { useState } from "react";
 import upload_area from "../../components/assets/admin/upload_area.svg";
 import "./addproduct.css";
+import Swal from "sweetalert2";
 import axios from "axios";
 
 const AddProduct = () => {
@@ -22,7 +23,6 @@ const AddProduct = () => {
 
   const imageHandler = (e) => {
     setImage(e.target.files[0]);
-    // console.log(e.target.files[0]);
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -31,51 +31,48 @@ const AddProduct = () => {
     };
   };
 
-  console.log(productDetails);
-
   const Add_Product = async () => {
-    // let responseData;
-    // // let product = productDetails;
-    // let formData = new FormData(); // เป็นการสร้าง Array []
-    // formData.append("product", image); // เพิ่ม name: value ลงใน [] --> [product, image(file)]
-    // console.log('TEST ==>' + Array.from(formData))
+    // Loading Animation
+    Swal.fire({
+      title: "Loading...",
+      html: "Please wait...",
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading(null);
+      },
+    });
 
-    // for (const element of formData) {
-    //   console.log(element)
-    // }
-
-    // --> Send API request
-    // ** 1.Create image to upload Folder **
-    // await fetch("http://www.localhost:4000/api/products", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //   },
-    //   body: formData, //[product(name), image(file)]
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => (responseData = data));
-    // if (!imageFile) return;
-    await axios.put(`${API_URL}/api/products`, productDetails);
-
-    // if (responseData.success) {
-    //   product.image = responseData.image_url;
-    //   console.log(product);
-
-    //   // 2.Create data to MongoDB
-    //   await fetch("http://www.localhost:4000/addproduct", {
-    //     method: "POST",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(product),
-    //   })
-    //     .then((resp) => resp.json())
-    //     .then((data) => {
-    //       data.success ? alert("Product Added") : alert("Faild");
-    //     });
-    // }
+    // Update Products
+    await axios
+      .put(`${API_URL}/api/products`, productDetails)
+      .then((res) => {
+        console.log(res);
+        Swal.close();
+        Swal.fire("Saved!", "", "success");
+        setProductDetails({
+          name: "",
+          image: "/products/noimage.jpg",
+          category: "women",
+          new_price: "",
+          old_price: "",
+        });
+        setImage(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.close();
+        Swal.fire("Update Faild!", "", "error");
+        setProductDetails({
+          name: "",
+          image: "/products/noimage.jpg",
+          category: "women",
+          new_price: "",
+          old_price: "",
+        });
+        setImage(false);
+      });
   };
 
   return (
