@@ -47,14 +47,17 @@ const createUsers = async (req, res) => {
 
 const updateUsers = async (req, res) => {
   try {
-    const response = req.body
+    const { name, email, password, role } = req.body
     const { id } = req.params
 
     const data = {
-      name: response.name,
-      email: response.email,
-      password: response.password,
-      role: response.role,
+      name,
+      email,
+      role,
+    }
+
+    if (password) {
+      data.password = response.password
     }
 
     const updated = await UserSchema.findOneAndUpdate({ _id: id }, data, { new: true })
