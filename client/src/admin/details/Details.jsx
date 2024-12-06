@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import upload_area from "../../components/assets/admin/upload_area.svg";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./details.css";
 
 const Details = () => {
   const [image, setImage] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
@@ -16,9 +17,11 @@ const Details = () => {
     old_price: "",
   });
 
-  // GetData from productID
+  const API_URL = import.meta.env.VITE_APP_API;
+
+  // Get Product from productID
   const fectInfo = async () => {
-    await fetch(`http://localhost:4000/allproducts/${id}`)
+    await fetch(`${API_URL}/api/products/${id}`)
       .then((resq) => resq.json())
       .then((data) => {
         setProductDetails({
@@ -32,7 +35,7 @@ const Details = () => {
       });
   };
 
-  // GetData from productID
+  // Update Product from productID
   const updateInfo = async () => {
     Swal.fire({
       title: "Do you want to save the changes?",
@@ -53,7 +56,7 @@ const Details = () => {
             Swal.showLoading(null);
           },
         });
-        await fetch(`http://localhost:4000/updateproduct/${id}`, {
+        await fetch(`${API_URL}/api/products/${id}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
@@ -78,7 +81,7 @@ const Details = () => {
     });
   };
 
-  // Delete Data from productID
+  // Delete Product
   const remove_product = async () => {
     Swal.fire({
       title: "Are you sure?",
@@ -100,8 +103,8 @@ const Details = () => {
             Swal.showLoading(null);
           },
         });
-        await fetch("http://localhost:4000/removeproduct", {
-          method: "POST",
+        await fetch(`${API_URL}/api/products`, {
+          method: "DELETE",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -117,6 +120,7 @@ const Details = () => {
               text: "Your file has been deleted.",
               icon: "success",
             });
+            navigate(-1);
           })
           .catch((err) => {
             console.log(err);
@@ -137,6 +141,13 @@ const Details = () => {
       return Swal.fire("Unable to update main image!", "", "error");
     }
     setImage(e.target.files[0]);
+
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setProductDetails({ ...productDetails, image: reader.result });
+    };
   };
 
   useEffect(() => {

@@ -6,8 +6,10 @@ import { Link } from "react-router-dom";
 const ListProduct = () => {
   const [allproducts, setAllproducts] = useState([]);
 
+  const URL = import.meta.env.VITE_APP_API;
+
   const fectInfo = async () => {
-    await fetch("http://localhost:4000/allproducts")
+    await fetch(`${URL}/api/products`)
       .then((resq) => resq.json())
       .then((data) => {
         setAllproducts(data);
@@ -53,12 +55,6 @@ const ListProduct = () => {
                   <Link to={`${product.id}`}>
                     <p className="cursor-pointer">details</p>
                   </Link>
-                  {/* <img
-                    onClick={(e) => remove_product(product.id)}
-                    className="listproduct-remove-icon cursor-pointer m-auto"
-                    src={cross_icon}
-                    alt=""
-                  /> */}
                 </div>
                 <hr />
               </>

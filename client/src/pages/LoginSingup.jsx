@@ -78,7 +78,7 @@ const LoginSingup = () => {
     toast.loading("Please wait...");
     // Axios API
     await axios
-      .post(`${URL}/singup`, data)
+      .post(`${URL}/api/users`, data)
       .then((resq) => {
         let response = resq.data;
         setResponseData(response);
@@ -103,7 +103,7 @@ const LoginSingup = () => {
   const onLogin = async (data) => {
     toast.loading("Please wait...");
     await axios
-      .post(`${URL}/login`, data)
+      .post(`${URL}/api/users/login`, data)
       .then((resq) => {
         let response = resq.data;
         console.log(response);

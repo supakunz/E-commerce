@@ -1,16 +1,19 @@
 import { useState } from "react";
 import upload_area from "../../components/assets/admin/upload_area.svg";
 import "./addproduct.css";
+import axios from "axios";
 
 const AddProduct = () => {
   const [image, setImage] = useState(false);
   const [productDetails, setProductDetails] = useState({
     name: "",
-    image: "",
+    image: "/products/noimage.jpg",
     category: "women",
     new_price: "",
     old_price: "",
   });
+
+  const API_URL = import.meta.env.VITE_APP_API;
 
   // Function get data จาก form
   const changeHandler = (e) => {
@@ -19,15 +22,22 @@ const AddProduct = () => {
 
   const imageHandler = (e) => {
     setImage(e.target.files[0]);
-    // console.log(e.target.files[0])
+    // console.log(e.target.files[0]);
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setProductDetails({ ...productDetails, image: reader.result });
+    };
   };
 
+  console.log(productDetails);
+
   const Add_Product = async () => {
-    console.log(productDetails);
-    let responseData;
-    let product = productDetails;
-    let formData = new FormData(); // เป็นการสร้าง Array []
-    formData.append("product", image); // เพิ่ม name: value ลงใน [] --> [product, image(file)]
+    // let responseData;
+    // // let product = productDetails;
+    // let formData = new FormData(); // เป็นการสร้าง Array []
+    // formData.append("product", image); // เพิ่ม name: value ลงใน [] --> [product, image(file)]
     // console.log('TEST ==>' + Array.from(formData))
 
     // for (const element of formData) {
@@ -36,34 +46,36 @@ const AddProduct = () => {
 
     // --> Send API request
     // ** 1.Create image to upload Folder **
-    await fetch("http://www.localhost:4000/upload", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData, //[product(name), image(file)]
-    })
-      .then((resp) => resp.json())
-      .then((data) => (responseData = data));
+    // await fetch("http://www.localhost:4000/api/products", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //   },
+    //   body: formData, //[product(name), image(file)]
+    // })
+    //   .then((resp) => resp.json())
+    //   .then((data) => (responseData = data));
+    // if (!imageFile) return;
+    await axios.put(`${API_URL}/api/products`, productDetails);
 
-    if (responseData.success) {
-      product.image = responseData.image_url;
-      console.log(product);
+    // if (responseData.success) {
+    //   product.image = responseData.image_url;
+    //   console.log(product);
 
-      // 2.Create data to MongoDB
-      await fetch("http://www.localhost:4000/addproduct", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          data.success ? alert("Product Added") : alert("Faild");
-        });
-    }
+    //   // 2.Create data to MongoDB
+    //   await fetch("http://www.localhost:4000/addproduct", {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(product),
+    //   })
+    //     .then((resp) => resp.json())
+    //     .then((data) => {
+    //       data.success ? alert("Product Added") : alert("Faild");
+    //     });
+    // }
   };
 
   return (
