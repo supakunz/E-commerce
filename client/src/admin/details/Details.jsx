@@ -96,6 +96,9 @@ const Details = () => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
+        if (id < 37) {
+          return Swal.fire("Unable to delete main products!", "", "error");
+        }
         Swal.fire({
           title: "Loading...",
           html: "Please wait...",
@@ -141,7 +144,7 @@ const Details = () => {
   };
 
   const imageHandler = (e) => {
-    if (id < 36) {
+    if (id < 37) {
       return Swal.fire("Unable to update main image!", "", "error");
     }
     setImage(e.target.files[0]);
