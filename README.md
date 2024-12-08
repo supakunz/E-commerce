@@ -14,6 +14,8 @@ https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99
       <li>Access control by API</li>
       <li>Smooth scroll to top</li>
       <li>Responsive with all devices</li>
+      <li>Access rights are differentiated between users and admin.</li>
+      <li>An admin dashboard for add edit and delete products and users.</li>
   </ul>
 
 ## 🍀 Technologyies Used
@@ -30,7 +32,12 @@ https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99
   <ul>
       <li>NodeJS</li>
       <li>ExpressJS</li>  
+  </ul>
+
+  <i>Database :</i>
+  <ul>
       <li>MongoDB</li>
+      <li>Cloudinary</li>
   </ul>
 
 
