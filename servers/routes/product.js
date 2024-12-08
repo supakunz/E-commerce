@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require("express");
 
 const router = express.Router();
 const {
@@ -6,13 +6,15 @@ const {
   createProducts,
   updateProducts,
   deleteProducts,
-  getProductsID
-} = require('../controllers/products')
+  getProductsID,
+} = require("../controllers/products");
 
-router.route('/').get(getAllProducts).put(createProducts).delete(deleteProducts)
+router
+  .route("/")
+  .get(getAllProducts)
+  .put(createProducts)
+  .delete(deleteProducts);
 
-// router.route('/upload').put(cre)
-
-router.route('/:id').get(getProductsID).put(updateProducts)
+router.route("/:id").get(getProductsID).put(updateProducts);
 
 module.exports = router;

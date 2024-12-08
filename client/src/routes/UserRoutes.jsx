@@ -8,6 +8,7 @@ import LoginSignup from "../pages/LoginSingup";
 import mens_banner from "../components/assets/banner_mens.png";
 import women_banner from "../components/assets/banner_women.png";
 import kids_banner from "../components/assets/banner_kids.png";
+import Checkout from "../pages/Checkout";
 
 function UserRoutes() {
   return (
@@ -30,6 +31,7 @@ function UserRoutes() {
           <Route path=":productId" element={<Product />} />
         </Route>
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<LoginSignup />} />
       </Routes>
     </UserLayout>
