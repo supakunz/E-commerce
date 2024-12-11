@@ -18,7 +18,11 @@ const paymentCreate = async (req, res) => {
         product_data: {
           name: item.name,
           description: `Category: ${item.category}, Size: ${item.size}`,
-          images: [`${item.image}`], // เพิ่ม URL ที่ถูกต้อง
+          images: [
+            `${
+              item.id < 37 ? process.env.CLIENT_URL + item.image : item.image
+            }`,
+          ], // เพิ่ม URL ที่ถูกต้อง
         },
         unit_amount: Math.round(item.new_price * exchangeRate * 100), // คูณ 100 เพื่อแปลงเป็นสตางค์
       },
