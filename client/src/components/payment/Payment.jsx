@@ -18,13 +18,13 @@ export default function Payment({ status }) {
   const getSessionID = async () => {
     await axios(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
       .then((res) => {
-        Swal.fire(
-          "Payment Successful",
-          "Thank you for your purchase!",
-          "success"
-        );
         setPaymentData(res.data);
         if (res.data.status != "complete") {
+          Swal.fire(
+            "Payment Successful",
+            "Thank you for your purchase!",
+            "success"
+          );
           return navigate(`/payment/cancel?id=${id}`);
         }
       })
