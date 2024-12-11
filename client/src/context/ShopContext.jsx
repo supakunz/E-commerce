@@ -43,6 +43,14 @@ const ShopContextProvider = (props) => {
     getAllProduct();
   }, []);
 
+  // ** รวม products กับ จำนวน + size
+  const combinedData = all_product
+    .filter((item) => cartItems[item.id]?.total > 0)
+    .map((item) => ({
+      ...item,
+      ...cartItems[item.id],
+    }));
+
   useEffect(() => {
     if (localStorage.getItem("auth-token")) {
       fetch(`${URL}/getcart`, {
@@ -61,14 +69,13 @@ const ShopContextProvider = (props) => {
   }, []);
 
   // Function เพิ่มลบของลงในตะกร้า
-  const addToCart = (itemId) => {
+  const addToCart = (itemId, size) => {
     // setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     setCartItems((prev) => ({
       ...prev,
-      [itemId]: { ...prev[itemId], total: prev[itemId].total + 1 },
+      [itemId]: { ...prev[itemId], total: prev[itemId].total + 1, size },
     }));
     // {cart ( Object จาก getDefaultCart ), key( ID ตัวที่จะเปลี่ยน ) : value( ค่าที่จะรับมาใหม่ +1 ) }
-    console.log(cartItems);
 
     // ** Check login ** --> have token
     if (localStorage.getItem("auth-token")) {
@@ -150,6 +157,7 @@ const ShopContextProvider = (props) => {
     getAllUsers,
     allusers,
     setAllusers,
+    combinedData,
   }; // all_product data
 
   // console.log(addToCart(1))

@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import star_icon from "../assets/star_icon.png";
 import star_dull_icon from "../assets/star_dull_icon.png";
 import { ShopContext } from "../../context/ShopContext";
 import "./productdisplay.css";
 
 const ProductDisplay = (props) => {
+  const [sizeProduct, setSizeProduct] = useState("S");
   const { addToCart } = useContext(ShopContext); // เรียกใช้ function ใน Stones
   const { product } = props;
 
   const size_toggle = (e) => {
-    e.target.classList.toggle("select");
+    setSizeProduct(e.target.value);
   };
 
   return (
@@ -75,40 +76,29 @@ const ProductDisplay = (props) => {
           <h1 className="mt-[40px] text-[#656565] text-[20px] font-medium">
             Select Size
           </h1>
-          <div className="productdisplay-right-size flex my-[25px] gap-[20px]">
-            <div
-              onClick={size_toggle}
-              className="cursor-pointer p-[18px_24px] bg-[#fbfbfb] rounded-[3px] border-solid border-[#ebebeb] border-[1px]"
-            >
-              S
-            </div>
-            <div
-              onClick={size_toggle}
-              className="cursor-pointer p-[18px_24px] bg-[#fbfbfb] rounded-[3px] border-solid border-[#ebebeb] border-[1px]"
-            >
-              M
-            </div>
-            <div
-              onClick={size_toggle}
-              className="cursor-pointer p-[18px_24px] bg-[#fbfbfb] rounded-[3px] border-solid border-[#ebebeb] border-[1px]"
-            >
-              L
-            </div>
-            <div
-              onClick={size_toggle}
-              className="cursor-pointer p-[18px_24px] bg-[#fbfbfb] rounded-[3px] border-solid border-[#ebebeb] border-[1px]"
-            >
-              XL
-            </div>
-            <div
-              onClick={size_toggle}
-              className="cursor-pointer p-[18px_24px] bg-[#fbfbfb] rounded-[3px] border-solid border-[#ebebeb] border-[1px]"
-            >
-              XXl
-            </div>
+          <div className="productdisplay-right-size flex my-[40px] gap-[20px]">
+            {["S", "M", "L", "XL", "XXL"].map((size, index) => (
+              <div key={index}>
+                <input
+                  checked={size === sizeProduct} // กำหนด checked เมื่อ size เท่ากับ "S"
+                  onChange={size_toggle}
+                  type="radio"
+                  name="size-radio"
+                  id={`${size}-radio`}
+                  value={`${size}`}
+                  className="hidden"
+                />
+                <label
+                  htmlFor={`${size}-radio`}
+                  className="cursor-pointer p-[18px_24px] bg-[#fbfbfb] rounded-[3px] border-solid border-[#ebebeb] border-[1px]"
+                >
+                  {size}
+                </label>
+              </div>
+            ))}
           </div>
           <button
-            onClick={() => addToCart(product.id)}
+            onClick={() => addToCart(product.id, sizeProduct)}
             className="p-[18px_38px] hover:text-[#adadad] w-[175px] text-[14px] font-medium text-white bg-black mb-[33px] border-none outline-none cursor-pointer"
           >
             ADD TO CART

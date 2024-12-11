@@ -19,6 +19,8 @@ const CartItem = () => {
     getTotalCartAmount();
   }, [removeFromCart]);
 
+  console.log(cartItems);
+
   return (
     <div className="cartitems m-[100px_170px]">
       <div className="cartitems-format-main grid items-center gap-[75px] py-[20px] text-[#454545] text-[16px] font-semibold grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr]">

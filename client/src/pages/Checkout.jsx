@@ -3,15 +3,35 @@ import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 
 export default function Checkout() {
   const { register, handleSubmit, reset } = useForm();
-  const { cartTotal, cartItems } = useContext(ShopContext);
+  const { cartTotal, cartItems, combinedData } = useContext(ShopContext);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalTax, setTotalTax] = useState(0); // ราคาสินค้ารวม VAT
+  const URL = import.meta.env.VITE_APP_API;
+  const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE_PUBLIC_KEY}`); // แทนที่ด้วย Stripe Public Key ของคุณ
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const formData = {
+      address: [data],
+      cart: [...combinedData],
+      quantity: totalAmount,
+      pricetotal: totalTax,
+    };
+
+    await axios
+      .post(`${URL}/api/payment`, formData)
+      .then(async (res) => {
+        const stripe = await stripePromise;
+        // Redirect to Checkout
+        await stripe.redirectToCheckout({
+          sessionId: res.data.id,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleCalculate = () => {

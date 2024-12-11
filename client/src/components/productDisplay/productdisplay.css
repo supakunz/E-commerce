@@ -1,6 +1,8 @@
-.select {
-  @apply !bg-black text-white;
+input[type="radio"]:checked + label {
+  color: white !important; /* เปลี่ยนสีข้อความของ label */
+  background-color: black !important; /* เปลี่ยนสีพื้นหลัง (ถ้าต้องการ) */
 }
+
 @media (max-width: 1280px) {
   .productdisplay {
     @apply mx-[60px];
