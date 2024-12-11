@@ -34,8 +34,8 @@ const paymentCreate = async (req, res) => {
       payment_method_types: ["card"],
       line_items: line_items,
       mode: "payment",
-      success_url: `${process.env.CLIENT_URL}/payment/success?id=${orderId}`, //หน้าที่จะ redirect ไปหลังจ่ายเงินสำเร็จ
-      cancel_url: `${process.env.CLIENT_URL}/payment/cancel?id=${orderId}`, //หน้าที่จะ redirect ไปหลังยกเลิกจ่ายเงิน
+      success_url: `${process.env.CLIENT_URL}/payment?id=${orderId}`, //หน้าที่จะ redirect ไปหลังจ่ายเงินสำเร็จ
+      cancel_url: `${process.env.CLIENT_URL}/payment?id=${orderId}`, //หน้าที่จะ redirect ไปหลังยกเลิกจ่ายเงิน
     });
 
     // create order in database (name, address, session id, status)
@@ -65,6 +65,17 @@ const paymentCreate = async (req, res) => {
   } catch (error) {
     console.error("Error creating user:", error.message);
     res.status(400).json({ error: "Error payment" });
+  }
+};
+
+const removeOrder = async (req, res) => {
+  try {
+    const orderId = req.params.id;
+    await orderSchema.findOneAndDelete({ order_id: orderId });
+    console.log("Remove Order");
+    res.json({ success: true, message: "Remove Successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error });
   }
 };
 
@@ -127,4 +138,4 @@ const webHook = async (req, res) => {
   res.send();
 };
 
-module.exports = { paymentCreate, getOrderID, webHook };
+module.exports = { paymentCreate, getOrderID, webHook, removeOrder };

@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { timehelper } from "../../helpers/timehelper";
@@ -7,37 +5,47 @@ import { goldhelper } from "../../helpers/goldhelper";
 import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
-export default function Payment({ status }) {
-  const [paymentData, setPaymentData] = useState([]);
+export default function Payment({ status, paymentData }) {
   const location = useLocation();
   const navigate = useNavigate();
   // ดึง query string จาก URL
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id"); // ดึงค่า id
 
-  const getSessionID = async () => {
-    await axios(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
-      .then((res) => {
-        setPaymentData(res.data);
-        if (res.data.status != "complete") {
-          Swal.fire(
-            "Payment Successful",
-            "Thank you for your purchase!",
-            "success"
-          );
-          return navigate(`/payment/cancel?id=${id}`);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        navigate("/cart");
-        Swal.fire("Server Error", "Please you try again later!", "error");
-      });
+  const removeOrder = async () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this order?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axios
+          .delete(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
+          .then((res) => {
+            console.log(res.data.message);
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your order has been deleted.",
+              icon: "success",
+            });
+            navigate("/cart");
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire({
+              title: "Delete Failed!",
+              text: "Please you try again later!",
+              icon: "error",
+            });
+            navigate("/cart");
+          });
+      }
+    });
   };
-
-  useEffect(() => {
-    getSessionID();
-  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -77,17 +85,27 @@ export default function Payment({ status }) {
             <span className="font-medium">{paymentData.order_id}</span>
           </div>
         </div>
-        <a
-          onClick={() => (status ? navigate("/cart") : navigate(-1))}
-          className={`mt-6 inline-flex items-center justify-center h-10 px-4 text-sm font-medium text-white cursor-pointer ${
-            status
-              ? "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500"
-              : "bg-red-500 hover:bg-red-600 focus:ring-red-400"
-          } rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2`}
-          // prefetch={false}
-        >
-          {status ? "Return to Homepage" : "Try Again"}
-        </a>
+        <div className="flex flex-row gap-10">
+          <a
+            onClick={() => (status ? navigate("/cart") : navigate(-2))}
+            className={`mt-6 inline-flex items-center justify-center h-10 px-4 text-sm font-medium text-white cursor-pointer ${
+              status
+                ? "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500"
+                : "bg-red-500 hover:bg-red-600 focus:ring-red-400"
+            } rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2`}
+            // prefetch={false}
+          >
+            {status ? "Return to Homepage" : "Try Again"}
+          </a>
+          {status ? null : (
+            <a
+              onClick={removeOrder}
+              className={`mt-6 inline-flex items-center justify-center h-10 px-4 text-sm font-medium text-white cursor-pointer bg-slate-500 hover:bg-slate-400 focus:ring-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2`}
+            >
+              Cancel
+            </a>
+          )}
+        </div>
       </main>
       <footer className="flex items-center justify-center h-14 border-t">
         <p className="text-sm text-gray-500 dark:text-gray-400">
