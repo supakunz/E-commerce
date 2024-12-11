@@ -2,15 +2,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { timehelper } from "../../helpers/timehelper";
 import { goldhelper } from "../../helpers/goldhelper";
+import { loadStripe } from "@stripe/stripe-js";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 /* eslint-disable react/prop-types */
 export default function Payment({ status, paymentData }) {
+  const [productsData, setProductsData] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   // ดึง query string จาก URL
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id"); // ดึงค่า id
+  const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE_PUBLIC_KEY}`); // แทนที่ด้วย Stripe Public Key ของคุณ
 
   const removeOrder = async () => {
     Swal.fire({
@@ -45,6 +49,38 @@ export default function Payment({ status, paymentData }) {
           });
       }
     });
+  };
+
+  const createSession = async () => {
+    // Product data from orderID
+    await axios(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
+      .then((res) => setProductsData(res.data))
+      .catch((err) => console.log(err));
+
+    // Remove Product data from orderID
+    await axios
+      .delete(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
+      .then((res) => {
+        console.log(res.data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // Create New Form Payment.
+    await axios
+      .post(`${import.meta.env.VITE_APP_API}/api/payment`, {
+        address: productsData.address,
+        cart: paymentData.products,
+      })
+      .then(async (res) => {
+        const stripe = await stripePromise;
+        // Redirect to Checkout
+        await stripe.redirectToCheckout({
+          sessionId: res.data.id,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -87,7 +123,7 @@ export default function Payment({ status, paymentData }) {
         </div>
         <div className="flex flex-row gap-10">
           <a
-            onClick={() => (status ? navigate("/cart") : navigate(-2))}
+            onClick={() => (status ? navigate("/cart") : createSession())}
             className={`mt-6 inline-flex items-center justify-center h-10 px-4 text-sm font-medium text-white cursor-pointer ${
               status
                 ? "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500"

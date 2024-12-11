@@ -5,7 +5,8 @@ const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET;
 
 const paymentCreate = async (req, res) => {
   const { address, cart } = req.body;
-  console.log(cart);
+  console.log("Cart ==>", cart);
+  console.log("Address ==>", address);
   try {
     // create payment session
     const orderId = uuidv4(); // generate orderId
