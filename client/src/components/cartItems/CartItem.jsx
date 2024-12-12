@@ -19,7 +19,7 @@ const CartItem = () => {
     getTotalCartAmount();
   }, [removeFromCart]);
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <div className="cartitems m-[100px_170px]">

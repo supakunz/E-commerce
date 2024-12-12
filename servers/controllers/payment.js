@@ -3,6 +3,16 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const orderSchema = require("../models/OrderModel");
 const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET;
 
+const getAllOrderlist = async (req, res) => {
+  try {
+    let products = await orderSchema.find({});
+    console.log("All Order List Fetched");
+    res.send(products);
+  } catch (error) {
+    res.status(404).json({ message: error });
+  }
+};
+
 const paymentCreate = async (req, res) => {
   const { address, cart } = req.body;
   console.log("Cart ==>", cart);
@@ -139,4 +149,10 @@ const webHook = async (req, res) => {
   res.send();
 };
 
-module.exports = { paymentCreate, getOrderID, webHook, removeOrder };
+module.exports = {
+  getAllOrderlist,
+  paymentCreate,
+  getOrderID,
+  webHook,
+  removeOrder,
+};

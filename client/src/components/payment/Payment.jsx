@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { timehelper } from "../../helpers/timehelper";
 import { goldhelper } from "../../helpers/goldhelper";
 import { loadStripe } from "@stripe/stripe-js";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /* eslint-disable react/prop-types */
 export default function Payment({ status, paymentData }) {
@@ -15,6 +16,13 @@ export default function Payment({ status, paymentData }) {
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id"); // ดึงค่า id
   const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE_PUBLIC_KEY}`); // แทนที่ด้วย Stripe Public Key ของคุณ
+
+  const getDataOrderID = async () => {
+    // Get Product data from orderID
+    await axios(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
+      .then((res) => setProductsData(res.data))
+      .catch((err) => console.log(err));
+  };
 
   const removeOrder = async () => {
     Swal.fire({
@@ -52,11 +60,6 @@ export default function Payment({ status, paymentData }) {
   };
 
   const createSession = async () => {
-    // Product data from orderID
-    await axios(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
-      .then((res) => setProductsData(res.data))
-      .catch((err) => console.log(err));
-
     // Remove Product data from orderID
     await axios
       .delete(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
@@ -82,6 +85,10 @@ export default function Payment({ status, paymentData }) {
       })
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    getDataOrderID();
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -212,6 +212,7 @@ const Details = () => {
             <option value="women">Women</option>
             <option value="men">Men</option>
             <option value="kid">Kid</option>
+            <option value="other">Other</option>
           </select>
         </div>
         <div className="addproduct-itemfield w-fit text-[#7b7b7b] text-[16px]">

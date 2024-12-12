@@ -9,6 +9,8 @@ import jwtDecode from "jwt-decode";
 import Details from "../admin/details/Details";
 import Customers from "../admin/customers/Customers";
 import CustomerEdit from "../admin/customers/CustomerEdit";
+import OrderList from "../admin/orderlist/OrderList";
+import OrderDetails from "../admin/orderlist/OrderDetails";
 
 function AdminRoutes() {
   const { isAuthenticated } = useAuth(); // ตรวจสอบสิทธิ์
@@ -56,6 +58,10 @@ function AdminRoutes() {
           <Route path="/customers">
             <Route path="/customers" element={<Customers />} />
             <Route path=":id" element={<CustomerEdit />} />
+          </Route>
+          <Route path="/orders">
+            <Route path="/orders" element={<OrderList />} />
+            <Route path=":id" element={<OrderDetails />} />
           </Route>
           {/* เพิ่มเส้นทางอื่นๆ ที่ Admin เข้าถึงได้ */}
         </Routes>

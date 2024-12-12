@@ -4,10 +4,10 @@ import "./item.css";
 
 const Item = (props) => {
   return (
-    <div className="item w-[280px]">
-      <div className="item-warp overflow-hidden w-full relative">
+    <div className="item w-full">
+      <div className="item-warp overflow-hidden w-fit relative">
         <img
-          className="w-[280px] hover:scale-[1.05] transition duration-[0.6s] object-cover"
+          className="w-[280px] h-[290px] hover:scale-[1.05] transition duration-[0.6s] object-cover"
           onClick={window.scrollTo(0, 0)}
           src={props.image}
           alt=""

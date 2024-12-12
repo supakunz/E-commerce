@@ -23,6 +23,7 @@ const ShopContextProvider = (props) => {
   const [cartTotal, setCartTotal] = useState(0);
   const [all_product, setAll_product] = useState(null || allproduct);
   const [allusers, setAllusers] = useState([]);
+  const [allorders, setAllorders] = useState([]);
   const URL = import.meta.env.VITE_APP_API;
 
   const getAllProduct = async () => {
@@ -36,6 +37,14 @@ const ShopContextProvider = (props) => {
       .then((resq) => resq.json())
       .then((data) => {
         setAllusers(data);
+      });
+  };
+
+  const getAllOrders = async () => {
+    await fetch(`${URL}/api/payment`)
+      .then((resq) => resq.json())
+      .then((data) => {
+        setAllorders(data);
       });
   };
 
@@ -158,9 +167,9 @@ const ShopContextProvider = (props) => {
     allusers,
     setAllusers,
     combinedData,
-  }; // all_product data
-
-  // console.log(addToCart(1))
+    getAllOrders,
+    allorders,
+  };
 
   return (
     <ShopContext.Provider value={contextValue}>

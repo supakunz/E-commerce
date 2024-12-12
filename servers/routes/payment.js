@@ -5,9 +5,10 @@ const {
   paymentCreate,
   getOrderID,
   removeOrder,
+  getAllOrderlist,
 } = require("../controllers/payment");
 
-router.route("/").post(paymentCreate);
+router.route("/").get(getAllOrderlist).post(paymentCreate);
 
 router.route("/:id").get(getOrderID).delete(removeOrder);
 
