@@ -9,13 +9,13 @@ https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99
 ## 🔥 Features
 
   <ul>
-      <li>Website has beautiful effects.</li>
-      <li>Authentication system</li>
-      <li>Access control by API</li>
-      <li>Smooth scroll to top</li>
-      <li>Responsive with all devices</li>
-      <li>Access rights are differentiated between users and admin.</li>
-      <li>An admin dashboard for add edit and delete products and users.</li>
+      <li>A robust authentication system ensures user data is safeguarded and protected.</li>
+      <li>Includes a smooth scroll-to-top feature for effortless navigation and improved usability.</li>
+      <li>Supports secure and reliable payments via Stripe. Helps users to make transactions easily.</li>
+      <li>Access rights are carefully differentiated, providing distinct privileges for users and admins.</li>
+      <li>The website is fully responsive, adapting flawlessly to all devices, from desktops to smartphones.</li>
+      <li>Seamless access control is implemented via APIs, ensuring secure and efficient permission management.</li>
+      <li>An intuitive admin panel enables the addition, editing, and deletion of products and users with ease.</li>
   </ul>
 
 ## 🍀 Technologyies Used
@@ -37,6 +37,11 @@ https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99
   <i>Database :</i>
   <ul>
       <li>MongoDB</li>
+  </ul>
+
+  <i>Platform :</i>
+  <ul>
+      <li>Stripe</li>
       <li>Cloudinary</li>
   </ul>
 
