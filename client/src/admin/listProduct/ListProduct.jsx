@@ -17,7 +17,7 @@ const ListProduct = () => {
           <p>Old Price</p>
           <p>New Price</p>
           <p>Category</p>
-          <p>Remove</p>
+          <p>Details</p>
         </div>
         <div className="listproduct-allproducts w-full overflow-y-auto max-h-[64vh]">
           <hr />
@@ -34,11 +34,11 @@ const ListProduct = () => {
                     className="listproduct-product-icon h-[80px] m-auto"
                   />
                   <p>{product.name}</p>
-                  <p>${product.old_price}</p>
-                  <p>${product.new_price}</p>
+                  <p>${product.old_price.toFixed(2)}</p>
+                  <p>${product.new_price.toFixed(2)}</p>
                   <p>{product.category}</p>
                   <Link to={`${product.id}`}>
-                    <p className="cursor-pointer">details</p>
+                    <p className="cursor-pointer">edit</p>
                   </Link>
                 </div>
                 <hr />
