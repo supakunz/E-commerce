@@ -30,14 +30,24 @@ const NewLetter = () => {
     <section className="px-4">
       <div className="newsletter container min-h-[20rem] h-[40vh] flex flex-col bg-gradient-to-b from-[#E9EAE3] from 0% to-[#e1ffea22] from 60% items-center justify-center m-auto px-[140px] my-[40px] gap-[35px]">
         <div className="flex flex-col items-center gap-[10px] mb-0 lg:mb-5 xl:mb-0">
-          <h1 className="text-[#171717] text-[40px] font-semibold">
+          <h1
+            data-aos="fade-left"
+            data-aos-delay="0"
+            className="text-[#171717] text-[40px] font-semibold"
+          >
             Get Exclusive Offers On Your Email
           </h1>
-          <p className="text-red-600 text-[20px] font-semibold">
+          <p
+            data-aos="fade-left"
+            data-aos-delay="300"
+            className="text-red-600 text-[20px] font-semibold"
+          >
             Subscribe to our newletter and stay updated
           </p>
         </div>
         <form
+          data-aos="fade-left"
+          data-aos-delay="600"
           onSubmit={handleSubmit}
           className="flex items-center justify-between bg-white w-[730px] h-[70px] rounded-[80px] border-solid border-[1px] border-[#e3e3e3]"
         >

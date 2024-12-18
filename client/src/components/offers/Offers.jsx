@@ -6,14 +6,32 @@ const Offers = () => {
   return (
     <div className="offers container mx-auto w-full relative h-[400px] flex m-auto px-[60px] lg:px-[140px] mb-[35px] mt-[35px] lg:mt-[6rem] xl:mt-[35px] overflow-hidden">
       <div className="offers-left flex flex-col justify-center">
-        <h1 className="text-[#171717] text-[55px] font-semibold">Exclusive</h1>
-        <h1 className="text-[#171717] text-[55px] font-semibold">
+        <h1
+          data-aos="fade-right"
+          data-aos-delay="0"
+          className="text-[#171717] text-[55px] font-semibold"
+        >
+          Exclusive
+        </h1>
+        <h1
+          data-aos="fade-right"
+          data-aos-delay="300"
+          className="text-[#171717] text-[55px] font-semibold"
+        >
           Offers For You
         </h1>
-        <p className=" text-red-600 text-[18px] font-bold">
+        <p
+          data-aos="fade-right"
+          data-aos-delay="600"
+          className=" text-red-600 text-[18px] font-bold"
+        >
           ONLY ON BEST SELLERS PRODUCTS
         </p>
-        <div className="cursor-pointer offers-lastest-btn flex justify-center items-center gap-[15px] tracking-[3px] w-[195px] h-[52px] mt-[30px] bg-[#111111] text-[white] text-[13px] font-bold">
+        <div
+          data-aos="fade-right"
+          data-aos-delay="900"
+          className="cursor-pointer offers-lastest-btn flex justify-center items-center gap-[15px] tracking-[3px] w-[195px] h-[52px] mt-[30px] bg-[#111111] text-[white] text-[13px] font-bold"
+        >
           <div>CHECK NOW</div>
           <img className="w-[15px]" src={arrow_icon} alt="" />
         </div>
