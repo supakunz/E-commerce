@@ -1,6 +1,6 @@
 @media (max-width: 1280px) {
   .newsletter {
-    @apply px-[80px];
+    @apply px-[80px] text-center;
   }
   .newsletter h1 {
     font-size: 36px;
@@ -8,13 +8,13 @@
   .newsletter p {
     font-size: 18px;
   }
-  .newsletter div {
+  .newsletter form {
     @apply w-[600px] h-[70px];
   }
-  .newsletter div input {
+  .newsletter form input {
     @apply w-[400px];
   }
-  .newsletter div button {
+  .newsletter form button {
     @apply w-[160px] h-[60px] text-[13px];
   }
 }
@@ -26,13 +26,13 @@
   .newsletter p {
     font-size: 16px;
   }
-  .newsletter div {
+  .newsletter form {
     @apply w-[500px] h-[65px];
   }
-  .newsletter div input {
+  .newsletter form input {
     @apply w-[300px] text-[14px];
   }
-  .newsletter div button {
+  .newsletter form button {
     @apply w-[120px] h-[50px] text-[10px];
   }
 }
@@ -49,13 +49,13 @@
     max-width: 300px;
     text-align: center;
   }
-  .newsletter div {
+  .newsletter form {
     @apply w-[290px] h-[42px];
   }
-  .newsletter div input {
+  .newsletter form input {
     @apply w-[130px];
   }
-  .newsletter div button {
+  .newsletter form button {
     @apply text-[7px] w-[76px] h-[32px];
   }
 }
