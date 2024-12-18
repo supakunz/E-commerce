@@ -1,9 +1,8 @@
-@media(max-width:800px){
-  .sidebar{
-    @apply py-[30px] flex !flex-row !w-full !max-w-none !h-auto justify-center
+@media (max-width: 760px) {
+  .sidebar {
+    @apply py-[30px] flex !flex-row !w-full !max-w-none !h-auto justify-center flex-wrap;
   }
-  .sidebar-item{
-    @apply m-0
+  .sidebar-item {
+    @apply m-0;
   }
 }
-

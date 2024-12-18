@@ -1,71 +1,38 @@
-.cartitems-format-main p{
-  @apply flex justify-center 
+.cartitems-format-main p {
+  @apply flex justify-center;
 }
-.cartitems-format p{
-  @apply flex justify-center
+.cartitems-format p {
+  @apply flex justify-center;
 }
-.cartitems-format div{
-  @apply flex justify-center
+.cartitems-format div {
+  @apply flex justify-center;
 }
-@media(max-width:1280px){
-  .cartitems{
-    @apply m-[60px_50px]
+@media (max-width: 1280px) {
+  .cartitems {
+    @apply m-[60px_50px];
   }
-  .cartitems-format-main p{
-    @apply flex justify-center 
+  .carticon-product-icon {
+    @apply h-[50px];
   }
-  .cartitems-format p{
-    @apply flex justify-center
+  .cartitems-remove-icon {
+    @apply m-auto;
   }
-  .carticon-product-icon{
-    @apply h-[50px]
+  .cartitems-quantity {
+    @apply w-[40px] h-[30px];
   }
-  .cartitems-remove-icon{
-    @apply m-auto
+  .cartitems-down {
+    @apply my-[50px] flex-col gap-[80px];
   }
-  .cartitems-quantity{
-    @apply w-[40px] h-[30px]
+  .cartitems-total {
+    @apply m-0;
   }
-  .cartitems-down{
-    @apply my-[50px] flex-col gap-[80px]
+  .cartitems-total button {
+    @apply max-w-[200px] h-[45px] text-[13px];
   }
-  .cartitems-total{
-    @apply m-0
+  .cartitems-promobox {
+    @apply w-auto max-w-[500px] flex justify-between;
   }
-  .cartitems-total button{
-    @apply max-w-[200px] h-[45px] text-[13px]
-  }
-  .cartitems-promobox{
-    @apply w-auto max-w-[500px] flex justify-between
-  }
-  .cartitems-promobox button{
-    @apply w-[120px]
-  }
-}
-
-@media(max-width:800px){
-  .cartitems-format-main{
-    @apply grid grid-cols-[0.8fr_3fr_1fr_1fr_1fr_1fr] gap-[10px] text-[14px] 
-  }
-  .cartitems-format-main p{
-    @apply flex justify-center 
-  }
-  .cartitems-format{
-    @apply grid grid-cols-[0.8fr_3fr_1fr_1fr_1fr_1fr] gap-[10px]
-  }
-  .cartitems-format p{
-    @apply flex justify-center
-  }
-}
-
-@media(max-width:500px){
-  .cartitems-format-main{
-    @apply hidden 
-  }
-  .cartitems-format{
-    @apply grid grid-cols-[0.5fr_3fr_0.5fr] gap-[10px] 
-  }
-  .cartitems-format p{
-    @apply flex justify-center
+  .cartitems-promobox button {
+    @apply w-[120px];
   }
 }

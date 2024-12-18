@@ -1,88 +1,91 @@
-.item .item-warp:hover button{
-    transform: translateY(-4rem);
+.item .item-warp:hover button {
+  transform: translateY(-4rem);
 }
-@media(max-width:1536px){
-  .item{
+@media (max-width: 1536px) {
+  /* .item{
     @apply w-[240px] text-[15px]
   }
   .item img{
     @apply w-[240px]
+  } */
+  .item-price-old {
+    @apply text-[14px];
   }
-  .item-price-old{
-    @apply text-[14px]
-  }
-  .item-price-new{
-    @apply text-[15px]
+  .item-price-new {
+    @apply text-[15px];
   }
 }
-@media(max-width:1280px){
-  .item{
+@media (max-width: 1280px) {
+  /* .item{
     @apply w-[220px] text-[14px]
   }
   .item img{
     @apply w-[220px]
+  } */
+  .item-price-old {
+    @apply text-[14px];
   }
-  .item-price-old{
-    @apply text-[14px]
+  .item-price-new {
+    @apply text-[15px];
   }
-  .item-price-new{
-    @apply text-[15px]
+  .item-warp button {
+    @apply w-[130px] h-[40px];
   }
-  .item-warp button{
-    @apply w-[130px] h-[40px]
-  }
-  .item .item-warp:hover button{
+  .item .item-warp:hover button {
     transform: translateY(-10rem);
-}
+  }
 }
 
-@media(max-width:1024px){
-  .item{
+@media (max-width: 1024px) {
+  /* .item{
     @apply w-[170px] text-[13px]
   }
   .item img{
     @apply w-[170px]
+  } */
+  .item-price-old {
+    @apply text-[13px];
   }
-  .item-price-old{
-    @apply text-[13px]
+  .item-price-new {
+    @apply text-[13px];
   }
-  .item-price-new{
-    @apply text-[13px]
+  .item-warp button {
+    @apply w-[100px] h-[32px] text-[13px];
   }
-  .item-warp button{
-    @apply w-[100px] h-[32px] text-[13px]
-  }
-  .item .item-warp:hover button{
+  .item .item-warp:hover button {
     transform: translateY(-9.5rem);
   }
 }
 
-@media(max-width:800px){
-  .item{
+@media (max-width: 800px) {
+  /* .item{
     @apply w-[120px] text-[12px]
   }
   .item img{
     @apply w-[120px]
+  } */
+  .item-price-old {
+    @apply text-[12px];
   }
-  .item-price-old{
-    @apply text-[12px]
+  .item-price-new {
+    @apply text-[12px];
   }
-  .item-price-new{
-    @apply text-[12px]
+  .item-warp button {
+    @apply w-[73px] h-[26px] text-[10px];
   }
-  .item-warp button{
-    @apply w-[73px] h-[26px] text-[10px]
-  }
-  .item .item-warp:hover button{
+  .item .item-warp:hover button {
     transform: translateY(-6.4rem);
   }
 }
 
-@media(max-width:500px){
-  .item{
-    @apply w-[160px] 
+@media (max-width: 670px) {
+  .item img {
+    @apply w-[240px];
   }
-  .item img{
-    @apply w-[160px]
+}
+
+@media (max-width: 590px) {
+  .item img {
+    @apply w-full;
   }
 }

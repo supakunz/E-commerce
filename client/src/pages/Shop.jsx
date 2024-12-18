@@ -1,16 +1,16 @@
 import Hero from "../components/hero/Hero";
-import Popular from "../components/popular/Popular";
 import Offers from "../components/offers/Offers";
-import NewCollections from "../components/newCollections/NewCollections";
 import NewLetter from "../components/newLetter/NewLetter";
+import FilterProducts from "../components/filter/FitterProducts";
+import Banner from "../components/banner/Banner";
 
 const Shop = () => {
   return (
     <div>
       <Hero />
-      <Popular />
+      <Banner />
       <Offers />
-      <NewCollections />
+      <FilterProducts />
       <NewLetter />
     </div>
   );

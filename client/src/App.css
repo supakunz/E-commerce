@@ -8,8 +8,16 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Nunito", sans-serif !important;
+  font-family: "Nunito Sans", sans-serif;
   overflow-x: hidden;
+}
+
+@layer components {
+  input:-webkit-autofill {
+    background-color: #fff !important;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    color: #616161 !important;
+  }
 }
 
 .logo {

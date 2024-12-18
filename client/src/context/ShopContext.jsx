@@ -123,6 +123,14 @@ const ShopContextProvider = (props) => {
     }
   };
 
+  // Function เปลี่ยน size product
+  const changSize = (itemId, size) => {
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: { ...prev[itemId], total: prev[itemId].total, size },
+    }));
+  };
+
   // Function รวมราคาสินค้าทั้งหมด
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -169,6 +177,7 @@ const ShopContextProvider = (props) => {
     combinedData,
     getAllOrders,
     allorders,
+    changSize,
   };
 
   return (

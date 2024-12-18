@@ -5,6 +5,7 @@ import nav_dropdown from "../assets/nav_dropdown.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext";
 import { useAuth } from "../../context/AuthProvider";
+import ButtonStyle from "../button/ButtonStyle";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
@@ -19,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar flex justify-around py-[1rem] shadow-[0px_1px_3px_-2px_black]">
+    <div className="navbar flex justify-between py-[1rem] px-5 shadow-[0px_1px_0px_-2px_black] container mx-auto">
       <Link
         className="flex items-center"
         onClick={() => setMenu("shop")}
@@ -75,21 +76,18 @@ const Navbar = () => {
       </ul>
       <div className="nav-login-cart flex items-center gap-[45px] cursor-pointer">
         {localStorage.getItem("auth-token") ? (
-          <button
+          <div
             onClick={() => {
               localStorage.removeItem("auth-token");
               logout();
               navigate("/");
             }}
-            className="w-[95px] bg-black h-[42px] outline-none rounded-[75px] text-[16px] text-white font-medium"
           >
-            Logout
-          </button>
+            <ButtonStyle type={"Logout"} />
+          </div>
         ) : (
           <Link onClick={() => setMenu(null)} to={"/login"}>
-            <button className="active:bg-[#f3f3f3] w-[95px] bg-white h-[42px] outline-none border-[1px] border-black rounded-[75px] text-[16px] text-[#515151] font-medium">
-              Login
-            </button>
+            <ButtonStyle type={"Login"} />
           </Link>
         )}
         <Link onClick={() => setMenu(null)} to={"/cart"}>

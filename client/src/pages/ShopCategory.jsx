@@ -8,6 +8,9 @@ import "./css/shopcategory.css";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
+// * Create Filter Animation
+import { AnimatePresence, motion } from "framer-motion";
+
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext); // เรียกใช้ data ใน
   const [sortby, setSortby] = useState("All");
@@ -24,13 +27,16 @@ const ShopCategory = (props) => {
   }, [props, explore]);
 
   return (
-    <div className="shop-category">
+    <div className="shop-category container mx-auto px-4">
+      {/* ------------------- Banner ------------------- */}
       <img
-        className="shopcategory-banner block my-[30px] mx-auto w-[82%]"
+        className="shopcategory-banner block my-[30px] w-full"
         src={props.banner}
         alt="branner"
       />
-      <div className="shopcategory-indexSort flex mx-[170px] justify-between items-center">
+
+      {/* ------------------- Filter ------------------- */}
+      <div className="flex justify-between items-center mb-[30px]">
         <p>
           <span className="font-medium">Showing 1-{showing}</span> out of{" "}
           {totalProduct} products
@@ -82,35 +88,42 @@ const ShopCategory = (props) => {
           </MenuItems>
         </Menu>
       </div>
-      <div className="shopcategory-products grid grid-cols-4 place-items-center gap-y-[80px] my-[20px] mx-[170px]">
-        {all_product
-          .sort((a, b) =>
-            sortby === "High"
-              ? b.new_price - a.new_price
-              : null || sortby === "Low"
-              ? a.new_price - b.new_price
-              : null || sortby === "All"
-              ? a.id - b.id
-              : null
-          )
-          .filter((item) => props.category === item.category)
-          .map((item, i) => {
-            if (i < showing) {
-              return (
-                <Item
-                  key={i}
-                  id={item.id}
-                  name={item.name}
-                  image={item.image}
-                  new_price={item.new_price}
-                  old_price={item.old_price}
-                />
-              );
-            } else {
-              null;
-            }
-          })}
-      </div>
+
+      {/* ------------------- Products List ------------------- */}
+      <motion.div className="grid product-grid">
+        <AnimatePresence>
+          {all_product
+            .sort((a, b) =>
+              sortby === "High"
+                ? b.new_price - a.new_price
+                : null || sortby === "Low"
+                ? a.new_price - b.new_price
+                : null || sortby === "All"
+                ? a.id - b.id
+                : null
+            )
+            .filter((item) => props.category === item.category)
+            .map((item, i) => {
+              if (i < showing) {
+                return (
+                  <motion.div
+                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    exit={{ opacity: 0, scale: 0 }}
+                    layout
+                    key={item.id}
+                  >
+                    <Item product={item} />
+                  </motion.div>
+                );
+              } else {
+                null;
+              }
+            })}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* ------------------- Loading Button  ------------------- */}
       <div
         onClick={() => setExplore(explore + 4)}
         className="cursor-pointer transition duration-[0.3s] ease-in-out shopcategory-loadmore flex items-center justify-center  my-[100px] mx-auto w-[190px] h-[48px] rounded-[75px] bg-[#e6e6e6] text-[#111111] text-[15px] font-bold hover:bg-black hover:text-white"

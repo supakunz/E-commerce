@@ -1,82 +1,61 @@
-@media(max-width:1280px){
-  .newsletter{
-    @apply px-[80px]
+@media (max-width: 1280px) {
+  .newsletter {
+    @apply px-[80px];
   }
-  .newsletter h1{
+  .newsletter h1 {
     font-size: 36px;
   }
-  .newsletter p{
-    font-size: 16px;
+  .newsletter p {
+    font-size: 18px;
   }
-  .newsletter div{
-    @apply w-[600px] h-[70px]
+  .newsletter div {
+    @apply w-[600px] h-[70px];
   }
-  .newsletter div input{
-    @apply w-[400px]
+  .newsletter div input {
+    @apply w-[400px];
   }
-  .newsletter div button{
-    @apply w-[160px] h-[60px] text-[13px]
+  .newsletter div button {
+    @apply w-[160px] h-[60px] text-[13px];
   }
 }
 
-@media(max-width:1024px){
-  .newsletter h1{
+@media (max-width: 1024px) {
+  .newsletter h1 {
     font-size: 30px;
   }
-  .newsletter p{
-    font-size: 14px;
+  .newsletter p {
+    font-size: 16px;
   }
-  .newsletter div{
-    @apply w-[500px] h-[65px]
+  .newsletter div {
+    @apply w-[500px] h-[65px];
   }
-  .newsletter div input{
-    @apply w-[300px] text-[14px]
+  .newsletter div input {
+    @apply w-[300px] text-[14px];
   }
-  .newsletter div button{
-    @apply w-[120px] h-[50px] text-[10px]
+  .newsletter div button {
+    @apply w-[120px] h-[50px] text-[10px];
   }
 }
 
-@media(max-width:800px){
-  .newsletter{
-    @apply h-[35vh]
+@media (max-width: 560px) {
+  .newsletter {
+    @apply min-h-[15rem] !important;
   }
-  .newsletter h1{
-    font-size: 20px;
+  .newsletter h1 {
+    font-size: 18px;
   }
-  .newsletter p{
+  .newsletter p {
     font-size: 12px;
-  }
-  .newsletter div{
-    @apply w-[400px] h-[52px]
-  }
-  .newsletter div input{
-    @apply w-[200px] text-[13px]
-  }
-  .newsletter div button{
-    @apply w-[100px] h-[40px] text-[9px]
-  }
-}
-
-@media(max-width:500px){
-  .newsletter{
-    @apply w-full h-[25vh] gap-[30px]
-  }
-  .newsletter h1{
-    font-size: 17px;
-  }
-  .newsletter p{
-    font-size: 11px;
     max-width: 300px;
     text-align: center;
   }
-  .newsletter div{
-    @apply w-[290px] h-[42px]
+  .newsletter div {
+    @apply w-[290px] h-[42px];
   }
-  .newsletter div input{
-    @apply w-[130px]
+  .newsletter div input {
+    @apply w-[130px];
   }
-  .newsletter div button{
-    @apply text-[8px]
+  .newsletter div button {
+    @apply text-[7px] w-[76px] h-[32px];
   }
 }

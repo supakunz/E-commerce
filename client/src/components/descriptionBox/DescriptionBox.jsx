@@ -3,7 +3,7 @@ import "./descriptionbox.css";
 const DescriptionBox = () => {
   return (
     <div>
-      <div className="descriptionbox m-[100px_150px]">
+      <div className="descriptionbox my-[100px] container mx-auto px-4">
         <div className="description-navigator flex">
           <div className="description-nav-box flex items-center justify-center text-[14px] font-medium w-[161px] h-[60px] border-solid border-[1px] border-[#d0d0d0]">
             Description

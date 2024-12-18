@@ -1,81 +1,81 @@
-.hero-lastest-btn{
+.hero-lastest-btn {
   transition: ease-in-out 0.2s;
   border-radius: 13px;
 }
-.hero-lastest-btn img{
+.hero-lastest-btn img {
   transition: ease-in-out 0.2s;
 }
 .hero-lastest-btn:hover {
   scale: 1.03;
   transition: ease-in-out 0.2s;
-  img{
+  img {
     transform: translateX(5px);
     transition: ease-in-out 0.2s;
   }
 }
 
-@media(max-width:1280px){
-  .hero-left{
+@media (max-width: 1280px) {
+  /* .hero-left{
     @apply pl-[100px]
+  } */
+  .hero-left h2 {
+    @apply text-[22px];
   }
-  .hero-left h2{
-    @apply text-[22px]
+  .hero-left p {
+    @apply text-[60px];
   }
-  .hero-left p{
-    @apply text-[60px]
-  }
-  .hero-hand-icon img{
-    @apply w-[80px]
+  .hero-hand-icon img {
+    @apply w-[80px];
   }
   /* .hero-lastest-btn{
     @apply gap-[10px] w-[250px] h-[60px] mt-[20px] text-[18px]
   } */
 }
 
-@media(max-width:1024px){
-  .hero-left{
+@media (max-width: 1024px) {
+  /* .hero-left{
     @apply pl-[80px]
+  } */
+  .hero-left h2 {
+    @apply text-[20px];
   }
-  .hero-left h2{
-    @apply text-[20px]
+  .hero-left p {
+    @apply text-[50px];
   }
-  .hero-left p{
-    @apply text-[50px]
+  .hero-hand-icon img {
+    @apply w-[55px];
   }
-  .hero-hand-icon img{
-    @apply w-[55px]
-  }
-  .hero-lastest-btn{
-    @apply w-[190px] h-[52px] text-[13px]
+  .hero-lastest-btn {
+    @apply w-[190px] h-[52px] text-[13px];
   }
 }
 
-@media(max-width:800px){
-  .hero-left{
+@media (max-width: 800px) {
+  /* .hero-left{
     @apply pl-[30px]
+  } */
+  .hero-left h2 {
+    @apply text-[16px];
   }
-  .hero-left h2{
-    @apply text-[16px]
+  .hero-left p {
+    @apply text-[40px];
   }
-  .hero-left p{
-    @apply text-[40px]
+  .hero-hand-icon img {
+    @apply w-[48px];
   }
-  .hero-hand-icon img{
-    @apply w-[48px]
-  }
-  .hero-lastest-btn{
-    @apply w-[168px] h-[45px] text-[12px]
+  .hero-lastest-btn {
+    @apply w-[168px] h-[45px] text-[12px];
   }
 }
 
-@media(max-width:500px){
-  .hero-left h2{
-    @apply text-[18px]
+@media (max-width: 500px) {
+  .hero-left h2 {
+    @apply text-[18px];
   }
-  .hero-left p{
-    @apply text-[38px]
+  .hero-left p {
+    @apply text-[38px];
   }
-  .hero-lastest-btn{
-    @apply text-[12px]
+  .hero-lastest-btn {
+    @apply text-[12px];
   }
-} 
+}

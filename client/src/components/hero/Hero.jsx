@@ -26,7 +26,7 @@ const Hero = () => {
     >
       <div>
         <div className="flex relative">
-          <div className="hero-left flex flex-col justify-center leading-[1.05] gap-[20px] pl-[180px] relative top-[30vh]">
+          <div className="hero-left flex flex-col justify-center leading-[1.05] gap-[20px] pl-[20px] lg:pl-[50px] xl:pl-[100px] 2xl:pl-[140px] relative top-[30vh] container mx-auto">
             <h2 className="text-red-600 text-[15px] tracking-[1px] font-bold">
               NEW ARRIVALS ONLY
             </h2>
@@ -54,7 +54,7 @@ const Hero = () => {
       </div>
       <div>
         <div className="flex">
-          <div className="hero-left flex flex-col justify-center leading-[1.1] gap-[20px] pl-[180px] relative top-[30vh]">
+          <div className="hero-left flex flex-col justify-center leading-[1.1] gap-[20px] pl-[20px] lg:pl-[50px] xl:pl-[100px] 2xl:pl-[140px] relative top-[30vh] container mx-auto">
             <h2 className="text-red-600 text-[15px] tracking-[1px] font-bold">
               NEW ARRIVALS ONLY
             </h2>

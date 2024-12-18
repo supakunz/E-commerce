@@ -16,39 +16,42 @@ const ProductDisplay = (props) => {
   };
 
   return (
-    <div className="productdisplay flex m-[0px_150px]">
-      <div className="productdisplay-left flex gap-[17px]">
-        <div className="productdisplay-img-list flex flex-col gap-[16px]">
+    <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-[3rem] xl:gap-0">
+      {/* ----------------- Image Content ----------------- */}
+      <div className="flex gap-[17px] justify-center md:justify-end lg:justify-center flex-row-reverse md:flex-col-reverse lg:flex-row">
+        <div className="productdisplay-img-list flex flex-col md:flex-row lg:flex-col gap-[16px]">
           <img
-            className="h-[113px] object-cove"
+            className="h-[113px] object-cover"
             src={product.image}
             alt="product_mini"
           />
           <img
-            className="h-[113px] object-cove"
+            className="h-[113px] object-cover"
             src={product.image}
             alt="product_mini"
           />
           <img
-            className="h-[113px] object-cove"
+            className="h-[113px] object-cover"
             src={product.image}
             alt="product_mini"
           />
           <img
-            className="h-[113px] object-cove"
+            className="h-[113px] object-cover"
             src={product.image}
             alt="product_mini"
           />
         </div>
         <div className="productdisplay-img">
           <img
-            className="productdisplay-main-img w-[420px] h-[500px] object-cover"
+            className="productdisplay-main-img w-[420px] h-full object-cover"
             src={product.image}
             alt="product"
           />
         </div>
       </div>
-      <div className="productdisplay-right flex flex-col flex-1 m-[0px_70px]">
+
+      {/* ----------------- Description Content ----------------- */}
+      <div className="flex flex-col">
         <h1 className="text-[30px] text-[#3d3d3d] font-semibold">
           {product.name}
         </h1>
@@ -62,13 +65,13 @@ const ProductDisplay = (props) => {
         </div>
         <div className="productdisplay-right-prices flex my-[35px] gap-[30px] text-[22px] font-semibold">
           <div className="productdisplay-right-price-old text-[#818181] line-through">
-            ${product.old_price}
+            ${product.old_price.toFixed(2)}
           </div>
           <div className="productdisplay-right-price-new text-[#ff4141]">
-            ${product.new_price}
+            ${product.new_price.toFixed(2)}
           </div>
         </div>
-        <div className="productdisplay-right-description">
+        <div>
           Lorem ipsum dolor sit amet consectetur, Quas vitae veniore atque
           expedita veniam laborum voluptas asperiores!
         </div>
@@ -76,7 +79,7 @@ const ProductDisplay = (props) => {
           <h1 className="mt-[40px] text-[#656565] text-[20px] font-medium">
             Select Size
           </h1>
-          <div className="productdisplay-right-size flex my-[40px] gap-[20px]">
+          <div className="flex my-[40px] gap-[20px] gap-y-[3.4rem] flex-wrap">
             {["S", "M", "L", "XL", "XXL"].map((size, index) => (
               <div key={index}>
                 <input
@@ -103,11 +106,11 @@ const ProductDisplay = (props) => {
           >
             ADD TO CART
           </button>
-          <p className="productdisplay-right-category">
+          <p>
             <span className="font-semibold">Category :</span>Women , T-Shirt,
             Crop Top
           </p>
-          <p className="productdisplay-right-category">
+          <p>
             <span className="font-semibold">Tags :</span>Modern, Latest
           </p>
         </div>
