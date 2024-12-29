@@ -1,15 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { goldhelper } from "../../helpers/goldhelper";
 import { timehelper } from "../../helpers/timehelper";
+import { ShopContext } from "../../context/ShopContext";
 
 const OrderDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [orderDetails, setorderDetails] = useState([]);
+  const { getAllOrders } = useContext(ShopContext); // เรียกใช้ data ใน
 
   const getOrderID = async () => {
     await axios(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
@@ -50,6 +52,7 @@ const OrderDetails = () => {
               text: "Your order has been deleted.",
               icon: "success",
             });
+            getAllOrders();
             navigate(-1);
           })
           .catch((err) => {
@@ -176,15 +179,6 @@ const OrderDetails = () => {
               </div>
             </div>
           </div>
-
-          {/* <div className="flex gap-5 mt-5">
-            <button className="addproduct-btn mt-[3px] w-[160px] h-[50px] rounded-[6px] bg-[#6079ff] border-none cursor-pointer text-white text-[16px] font-medium">
-              UPDATE
-            </button>
-            <button className="addproduct-btn mt-[3px] w-[160px] h-[50px] rounded-[6px] bg-red-500 border-none cursor-pointer text-white text-[16px] font-medium">
-              DELETE
-            </button>
-          </div> */}
         </div>
       ) : (
         <p>Loading...</p>
