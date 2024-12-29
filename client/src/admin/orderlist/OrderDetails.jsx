@@ -1,15 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { goldhelper } from "../../helpers/goldhelper";
 import { timehelper } from "../../helpers/timehelper";
+import { ShopContext } from "../../context/ShopContext";
 
 const OrderDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [orderDetails, setorderDetails] = useState([]);
+  const { getAllOrders } = useContext(ShopContext); // เรียกใช้ data ใน
 
   const getOrderID = async () => {
     await axios(`${import.meta.env.VITE_APP_API}/api/payment/${id}`)
@@ -50,6 +52,7 @@ const OrderDetails = () => {
               text: "Your order has been deleted.",
               icon: "success",
             });
+            getAllOrders();
             navigate(-1);
           })
           .catch((err) => {
