@@ -4,7 +4,16 @@
 
 const Input = (props) => {
   // const [showpassword, setShowpassword] = useState(false);
-  const { name, type, placeholder, register, error } = props;
+  const {
+    name,
+    type,
+    placeholder,
+    register,
+    error,
+    handleKeyDown,
+    handleFocus,
+    isCursorVisible,
+  } = props;
   return (
     <div>
       <input
@@ -15,7 +24,12 @@ const Input = (props) => {
         name={name}
         type={type}
         placeholder={placeholder}
+        onKeyDown={handleKeyDown}
+        onFocus={handleFocus}
         required
+        style={{
+          caretColor: isCursorVisible ? "black" : "transparent", // ทำให้เคอร์เซอร์หาย
+        }}
       />
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>

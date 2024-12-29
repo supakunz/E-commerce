@@ -72,6 +72,7 @@ const Details = () => {
             Swal.close();
             Swal.fire("Saved!", "", "success");
             getAllProduct();
+            navigate(-1);
           })
           .catch((err) => {
             console.log(err);

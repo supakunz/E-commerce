@@ -1,16 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./customers.css";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext";
 
 const Customers = () => {
-  const { getAllUsers, allusers } = useContext(ShopContext); // เรียกใช้ data ใน
-
-  useEffect(() => {
-    getAllUsers();
-  }, []);
-
+  const { allusers } = useContext(ShopContext); // เรียกใช้ data ใน
   return (
     <>
       <div className="list-product flex flex-col items-center w-full h-full p-[10px_50px] m-[30px] rounded-[6px] bg-white">

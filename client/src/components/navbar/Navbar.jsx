@@ -6,9 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext";
 import { useAuth } from "../../context/AuthProvider";
 import ButtonStyle from "../button/ButtonStyle";
+import jwtDecode from "jwt-decode";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
+  const token = localStorage.getItem("auth-token");
   const { logout } = useAuth();
   const navigate = useNavigate();
   const { getTotalCartItems } = useContext(ShopContext);
@@ -17,6 +19,41 @@ const Navbar = () => {
   const drop_toggle = (e) => {
     menuRef.current.classList.toggle("nav-menu-visible");
     e.target.classList.toggle("open");
+  };
+
+  const btncheckRole = () => {
+    if (token) {
+      const decoded = jwtDecode(token);
+      const userRole = decoded.user?.role;
+      if (userRole !== "admin") {
+        return (
+          <div
+            onClick={() => {
+              localStorage.removeItem("auth-token");
+              logout();
+              navigate("/");
+            }}
+          >
+            <ButtonStyle type={"Logout"} />
+          </div>
+        );
+      } else if (userRole === "admin") {
+        return (
+          <div
+            onClick={() => {
+              navigate("/admin");
+            }}
+          >
+            <ButtonStyle type={"Admin"} />
+          </div>
+        );
+      }
+    }
+    return (
+      <Link onClick={() => setMenu(null)} to={"/login"}>
+        <ButtonStyle type={"Login"} />
+      </Link>
+    );
   };
 
   return (
@@ -75,21 +112,7 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="nav-login-cart flex items-center gap-[45px] cursor-pointer">
-        {localStorage.getItem("auth-token") ? (
-          <div
-            onClick={() => {
-              localStorage.removeItem("auth-token");
-              logout();
-              navigate("/");
-            }}
-          >
-            <ButtonStyle type={"Logout"} />
-          </div>
-        ) : (
-          <Link onClick={() => setMenu(null)} to={"/login"}>
-            <ButtonStyle type={"Login"} />
-          </Link>
-        )}
+        {btncheckRole()}
         <Link onClick={() => setMenu(null)} to={"/cart"}>
           <img className="min-w-[28px]" src={cart_icon} alt="" />
         </Link>

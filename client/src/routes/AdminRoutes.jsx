@@ -11,13 +11,14 @@ import Customers from "../admin/customers/Customers";
 import CustomerEdit from "../admin/customers/CustomerEdit";
 import OrderList from "../admin/orderlist/OrderList";
 import OrderDetails from "../admin/orderlist/OrderDetails";
+import Dashboard from "../admin/dashboard/Dashboard";
 
 function AdminRoutes() {
   const { isAuthenticated } = useAuth(); // ตรวจสอบสิทธิ์
   const token = localStorage.getItem("auth-token");
 
   // -------- ** ตรวจสอบการ Login และแยก Role ----------
-  // 1.เมื่อไม่มี token และ login
+  // 1.เมื่อไม่มี token และ ไม่ login
   if (!token && !isAuthenticated) {
     console.error("No token found");
     return <Navigate to="/login" replace />;
@@ -50,6 +51,7 @@ function AdminRoutes() {
       <div className="flex flex-col md:flex-row bg-[#F6F6F6] min-h-[89vh]">
         <Sidebar />
         <Routes>
+          <Route path="/" element={<Dashboard />} />
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/listproduct">
             <Route path="/listproduct" element={<ListProduct />} />

@@ -36,7 +36,18 @@ const LoginSingup = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [responseData, setResponseData] = useState([]);
+  const [isCursorVisible, setIsCursorVisible] = useState(true);
   const URL = import.meta.env.VITE_APP_API;
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      setIsCursorVisible(false); // ทำให้เคอร์เซอร์หาย
+    }
+  };
+
+  const handleFocus = () => {
+    setIsCursorVisible(true); // เคอร์เซอร์กลับมาหลังจากการคลิก
+  };
 
   // วิธีเก็บค่าจาก Form --> 1. useForm to easy
   const {
@@ -74,7 +85,7 @@ const LoginSingup = () => {
     //   },
     //   body: JSON.stringify(data),
     // }).then(resq => resq.json()).then(data => data = setResponseData(data))
-
+    setIsCursorVisible(false); // ทำให้เคอร์เซอร์กลับมาหลังส่งฟอร์ม
     toast.loading("Please wait...");
     // Axios API
     await axios
@@ -101,11 +112,13 @@ const LoginSingup = () => {
         });
         console.log(err.response);
         reset();
-      });
+      })
+      .finally(() => setIsCursorVisible(true)); // ทำให้เคอร์เซอร์กลับมาเมื่อการส่งฟอร์มเสร็จ)
   };
 
   // **-------- Function Login ---------
   const onLogin = async (data) => {
+    setIsCursorVisible(false); // ทำให้เคอร์เซอร์กลับมาหลังส่งฟอร์ม
     toast.loading("Please wait...");
     await axios
       .post(`${URL}/api/users/login`, data)
@@ -131,7 +144,8 @@ const LoginSingup = () => {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => setIsCursorVisible(true));
   };
 
   return (
@@ -152,6 +166,9 @@ const LoginSingup = () => {
                 placeholder={"Your Name"}
                 register={register}
                 error={errors?.username?.message}
+                handleKeyDown={handleKeyDown}
+                handleFocus={handleFocus}
+                isCursorVisible={isCursorVisible}
               />
             ) : null}
             <Input
@@ -160,6 +177,9 @@ const LoginSingup = () => {
               placeholder={"Email Address"}
               register={register}
               error={errors?.email?.message}
+              handleKeyDown={handleKeyDown}
+              handleFocus={handleFocus}
+              isCursorVisible={isCursorVisible}
             />
             <Input
               name={"password"}
@@ -167,6 +187,9 @@ const LoginSingup = () => {
               placeholder={"Password"}
               register={register}
               error={errors?.password?.message}
+              handleKeyDown={handleKeyDown}
+              handleFocus={handleFocus}
+              isCursorVisible={isCursorVisible}
             />
           </div>
           <button

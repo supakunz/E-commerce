@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import allproduct from "../components/assets/all_product"; // ** All product **
+import { goldhelper } from "../helpers/goldhelper";
 
 // create useContext
 export const ShopContext = createContext(null); // ชื่อ Stones ที่จะเรียกใช้
@@ -22,14 +23,17 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [cartTotal, setCartTotal] = useState(0);
   const [all_product, setAll_product] = useState(null || allproduct);
+  const [productTotal, setProductTotal] = useState(0);
   const [allusers, setAllusers] = useState([]);
   const [allorders, setAllorders] = useState([]);
+  const [orderTotal, setOrderTotal] = useState(0);
   const URL = import.meta.env.VITE_APP_API;
 
   const getAllProduct = async () => {
     await fetch(`${URL}/api/products`)
       .then((res) => res.json())
-      .then((data) => setAll_product(data));
+      .then((data) => setAll_product(data))
+      .catch((err) => console.log("Error", err));
   };
 
   const getAllUsers = async () => {
@@ -37,7 +41,8 @@ const ShopContextProvider = (props) => {
       .then((resq) => resq.json())
       .then((data) => {
         setAllusers(data);
-      });
+      })
+      .catch((err) => console.log("Error", err));
   };
 
   const getAllOrders = async () => {
@@ -45,7 +50,8 @@ const ShopContextProvider = (props) => {
       .then((resq) => resq.json())
       .then((data) => {
         setAllorders(data);
-      });
+      })
+      .catch((err) => console.log("Error", err));
   };
 
   useEffect(() => {
@@ -131,7 +137,7 @@ const ShopContextProvider = (props) => {
     }));
   };
 
-  // Function รวมราคาสินค้าทั้งหมด
+  // Function รวมราคาสินค้าทั้งหมด * ในตระกร้า
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
@@ -150,6 +156,28 @@ const ShopContextProvider = (props) => {
       }
       // return totalAmount
     }
+  };
+
+  // Function รวมราคา Order ทั้งหมดที่มีการสั่งซื้อ
+  const getAllOrderAmount = () => {
+    let totalAmount = 0;
+    allorders.forEach((price) => {
+      totalAmount += Number(price.amount_total);
+    });
+    const price = (goldhelper(totalAmount) / 35).toFixed(2);
+    setOrderTotal(price);
+    return price;
+  };
+
+  // Function รวมราคา Products ทั้งหมด
+  const getAllProductsAmount = () => {
+    let totalAmount = 0;
+    all_product.forEach((price) => {
+      totalAmount += Number(price.new_price);
+    });
+    const price = totalAmount.toFixed(2);
+    setProductTotal(price);
+    return price;
   };
 
   // Function จำนวนสินค้าในตระกร้า
@@ -178,6 +206,10 @@ const ShopContextProvider = (props) => {
     getAllOrders,
     allorders,
     changSize,
+    orderTotal,
+    getAllOrderAmount,
+    productTotal,
+    getAllProductsAmount,
   };
 
   return (

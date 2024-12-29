@@ -67,6 +67,7 @@ const CustomerEdit = () => {
             Swal.close();
             Swal.fire("Saved!", "", "success");
             getAllUsers();
+            navigate(-1);
           })
           .catch((err) => {
             console.log(err);

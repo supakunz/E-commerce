@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./orderlist.css";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext";
@@ -7,12 +7,7 @@ import { goldhelper } from "../../helpers/goldhelper";
 import { timehelper } from "../../helpers/timehelper";
 
 const OrderList = () => {
-  const { getAllOrders, allorders } = useContext(ShopContext); // เรียกใช้ data ใน
-
-  useEffect(() => {
-    getAllOrders();
-  }, []);
-
+  const { allorders } = useContext(ShopContext); // เรียกใช้ data ใน
   return (
     <>
       <div className="list-product flex flex-col items-center w-full h-full p-[10px_50px] m-[30px] rounded-[6px] bg-white">
