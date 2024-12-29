@@ -150,7 +150,7 @@ const LoginSingup = () => {
 
   return (
     <div className="loginsignup w-[100%] bg-[#999] py-[60px]">
-      <div className="loginsignup-container w-[580px] min-h-[600px] bg-white m-auto p-[32px_60px]">
+      <div className="loginsignup-container w-full max-w-[580px] min-h-[600px] bg-white m-auto p-[32px_60px]">
         <h1 className="text-[30px] font-medium mt-[15px]">{state}</h1>
         <form
           onSubmit={
