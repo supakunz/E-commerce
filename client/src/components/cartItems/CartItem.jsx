@@ -67,7 +67,11 @@ const CartItem = () => {
                   </div>
                   <div>
                     <select
-                      className={`shadow z-10 bg-white py-2 text-gray-600 focus:outline-none w-[50px]`}
+                      className={`shadow z-10 bg-white py-2 text-gray-600 focus:outline-none w-[50px] ${
+                        cartItems[e.id].size == "none"
+                          ? "pointer-events-none"
+                          : ""
+                      }`}
                       name="size"
                       value={cartItems[e.id].size}
                       onChange={(event) => changSize(e.id, event.target.value)}
@@ -102,6 +106,14 @@ const CartItem = () => {
                       >
                         XXL
                       </option>
+                      {cartItems[e.id].size == "none" && (
+                        <option
+                          value={"none"}
+                          className="focus:outline-none cursor-pointer px-3 hover:text-white hover:bg-gray-800 focus:bg-gray-800 focus:text-white text-left text-base text-gray-600 w-full"
+                        >
+                          -
+                        </option>
+                      )}
                     </select>
                   </div>
                   <p>${(e.new_price * cartItems[e.id].total).toFixed(2)}</p>

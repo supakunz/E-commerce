@@ -76,7 +76,7 @@ const Navbar = () => {
       />
       <ul
         ref={menuRef}
-        className="nav-menu flex items-center list-none gap-[50px] text-[#111111] text-[17px] font-semibold z-10 "
+        className="nav-menu flex items-center list-none gap-[35px] md:gap-[28px] lg:gap-[50px] text-[#111111] text-[17px] font-semibold z-10 "
       >
         <li
           onClick={() => {
@@ -109,6 +109,14 @@ const Navbar = () => {
         >
           <Link to={"/kids"}>Kids</Link>{" "}
           {menu === "kids" ? <hr style={{ width: "100%" }} /> : <hr />}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("other");
+          }}
+        >
+          <Link to={"/other"}>Other</Link>{" "}
+          {menu === "other" ? <hr style={{ width: "100%" }} /> : <hr />}
         </li>
       </ul>
       <div className="nav-login-cart flex items-center gap-[45px] cursor-pointer">

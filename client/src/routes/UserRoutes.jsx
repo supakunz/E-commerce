@@ -9,6 +9,7 @@ import mens_banner from "../components/assets/banner_mens.png";
 import women_banner from "../components/assets/banner_women.png";
 import kids_banner from "../components/assets/banner_kids.png";
 import Checkout from "../pages/Checkout";
+import NotFound from "../pages/NotFound";
 
 function UserRoutes() {
   return (
@@ -27,12 +28,18 @@ function UserRoutes() {
           path="/kids"
           element={<ShopCategory banner={kids_banner} category="kid" />}
         />
+        <Route
+          path="/other"
+          element={<ShopCategory banner={kids_banner} category="other" />}
+        />
         <Route path="/product" element={<Product />}>
           <Route path=":productId" element={<Product />} />
         </Route>
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<LoginSignup />} />
+        {/* Route สำหรับหน้า 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </UserLayout>
   );
