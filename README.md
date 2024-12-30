@@ -61,7 +61,18 @@ cd E-commerce
 npm install
 ```
 
-3. Launch the application in development mode :
+3. Set up the environment variables :
+
+ - Create a `.env.local` file in the root directory.
+
+ - Add the following variables to the .env file, replacing the placeholder values with your own:
+
+```
+VITE_APP_API = http://localhost:4000
+VITE_STRIPE_PUBLIC_KEY = <your_stripe_public_key>
+```
+
+4. Launch the application in development mode :
 
 ```
 npm run dev
