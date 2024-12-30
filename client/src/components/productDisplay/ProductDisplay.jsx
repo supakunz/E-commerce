@@ -118,8 +118,9 @@ const ProductDisplay = (props) => {
             ADD TO CART
           </button>
           <p>
-            <span className="font-semibold">Category :</span>Women , T-Shirt,
-            Crop Top
+            <span className="font-semibold">Category :</span>{" "}
+            {product.category.charAt(0).toUpperCase() +
+              product.category.slice(1)}
           </p>
           <p>
             <span className="font-semibold">Tags :</span>Modern, Latest
