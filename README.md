@@ -61,7 +61,31 @@ cd E-commerce
 npm install
 ```
 
-3. Launch the application in development mode :
+3. Set up the environment variables :
+
+ - Create a `.env.local` file in the client and server root directory.
+
+ - Add the following variables to the .env file on client, replacing the placeholder values with your own:
+
+```
+VITE_APP_API = http://localhost:4000
+VITE_STRIPE_PUBLIC_KEY = <your_stripe_public_key>
+```
+
+ - Add the following variables to the .env file on server, replacing the placeholder values with your own:
+
+```
+PORT = 4000
+MONGO_URL = <your_mongoDB_url>
+CLIENT_URL = http://localhost:5173 #onLocal
+CLOUDINARY_NAME = <your_cloudinary_name>
+CLOUDINARY_API_KEY = <your_cloudinary_api_key>
+CLOUDINARY_API_SECRET = <your_cloudinary_api_secret>
+STRIPE_SECRET_KEY = <your_stripe_secret_key>
+STRIPE_ENDPOINT_SECRET = <your_stripe_endpoint_secret>
+```
+
+4. Launch the application in development mode :
 
 ```
 npm run dev
