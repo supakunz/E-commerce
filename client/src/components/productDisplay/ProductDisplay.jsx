@@ -102,7 +102,7 @@ const ProductDisplay = (props) => {
                     />
                     <label
                       htmlFor={`${size}-radio`}
-                      className="cursor-pointer p-[18px_24px] bg-[#fbfbfb] rounded-[3px] border-solid border-[#ebebeb] border-[1px]"
+                      className="cursor-pointer p-[18px_24px] bg-[#fbfbfb] rounded-lg border-solid border-[#ebebeb] border-[1px]"
                     >
                       {size}
                     </label>
@@ -113,7 +113,7 @@ const ProductDisplay = (props) => {
           )}
           <button
             onClick={() => addToCart(product.id, sizeProduct)}
-            className="p-[18px_38px] hover:text-[#adadad] w-[175px] text-[14px] font-medium text-white bg-black mb-[33px] border-none outline-none cursor-pointer mt-[40px]"
+            className="p-[18px_38px] rounded-lg hover:text-[#adadad] w-[175px] text-[14px] font-medium text-white bg-black mb-[33px] border-none outline-none cursor-pointer mt-[40px]"
           >
             ADD TO CART
           </button>

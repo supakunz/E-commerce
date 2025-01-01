@@ -48,9 +48,9 @@ const Hero = () => {
   return (
     <Slider
       {...settings}
-      className="hero h-screen min-h-[38rem] flex lg:mb-[90px] md:mb-[70px] sm:mb-[50px] mb-[45px]"
+      className="hero min-h-[38rem] lg:mb-[90px] md:mb-[70px] sm:mb-[50px] mb-[45px]"
     >
-      <div>
+      <div className="h-screen">
         <div className="flex relative">
           <div
             className={`hero-left flex flex-col justify-center leading-[1.1] gap-[20px] pl-[20px] lg:pl-[50px] xl:pl-[100px] 2xl:pl-[140px] relative top-[30vh] container mx-auto`}
@@ -96,7 +96,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="h-screen">
         <div className="flex relative">
           <div
             className={`hero-left flex flex-col justify-center leading-[1.05] gap-[20px] pl-[20px] lg:pl-[50px] xl:pl-[100px] 2xl:pl-[140px] relative top-[30vh] container mx-auto`}
@@ -135,7 +135,7 @@ const Hero = () => {
           </div>
           <div className="hero-right">
             <img
-              className="w-full h-screen absolute left-0 top-[-4px] z-[-1] object-cover"
+              className="w-full h-screen absolute left-0 top-0 z-[-1] object-cover"
               src={hero_women}
               alt=""
             />

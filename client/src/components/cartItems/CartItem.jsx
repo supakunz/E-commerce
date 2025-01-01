@@ -41,7 +41,7 @@ const CartItem = () => {
                 <div className="cartitems-format grid items-center gap-[75px] py-[20px] text-[#454545] text-[15px] font-medium grid-cols-[1fr_2fr_1fr_1fr_1fr_1fr]">
                   <div>
                     <img
-                      className="carticon-product-icon object-cover w-full h-full max-w-[60px] object-top"
+                      className="rounded-[0.3rem] carticon-product-icon object-cover w-full h-full max-w-[60px] object-top"
                       src={e.image}
                       alt=""
                     />
@@ -50,24 +50,24 @@ const CartItem = () => {
                   <p>${e.new_price.toFixed(2)}</p>
                   <div className="flex justify-center items-center gap-2">
                     <span
-                      className="cursor-pointer text-[25px] h-[25px] w-[25px] flex items-center justify-center border-solid border-[2px] border-[#ebebeb]"
+                      className="rounded-[0.3rem] cursor-pointer text-[25px] h-[25px] w-[25px] flex items-center justify-center border-solid border-[2px] border-[#ebebeb]"
                       onClick={() => addToCart(e.id, cartItems[e.id].size)}
                     >
                       +
                     </span>
-                    <button className="cartitems-quantity w-[58px] h-[44px] border-solid border-[2px] border-[#ebebeb] bg-[#FFF]">
+                    <button className="rounded-[0.3rem] cartitems-quantity w-[58px] h-[44px] border-solid border-[2px] border-[#ebebeb] bg-[#FFF]">
                       {cartItems[e.id].total}
                     </button>
                     <span
                       onClick={() => removeFromCart(e.id)}
-                      className="cursor-pointer text-[25px] h-[26px] w-[25px] flex items-center justify-center border-solid border-[2px] border-[#ebebeb]"
+                      className="rounded-[0.3rem] cursor-pointer text-[25px] h-[26px] w-[25px] flex items-center justify-center border-solid border-[2px] border-[#ebebeb]"
                     >
                       -
                     </span>
                   </div>
                   <div>
                     <select
-                      className={`shadow z-10 bg-white py-2 text-gray-600 focus:outline-none w-[50px] ${
+                      className={`shadow z-10 rounded-[0.3rem] bg-white py-2 text-gray-600 focus:outline-none w-[50px] ${
                         cartItems[e.id].size == "none"
                           ? "pointer-events-none"
                           : ""
@@ -149,7 +149,7 @@ const CartItem = () => {
           <Link to={"/checkout"}>
             <button
               onClick={() => window.scrollTo(0, 0)}
-              className="w-[262px] h-[58px] outline-none border-none bg-black text-[#fff] text-[14px] font-medium cursor-pointer hover:text-[#adadad]"
+              className="w-[262px] rounded-lg h-[58px] outline-none border-none bg-black text-[#fff] text-[14px] font-medium cursor-pointer hover:text-[#adadad]"
             >
               PROCEED TO CHECKOUT
             </button>
@@ -157,13 +157,13 @@ const CartItem = () => {
         </div>
         <div className="cartitems-promocode flex-1 text-[15px] font-medium">
           <p className="text-[#555]">If you a promo code, Enter it here</p>
-          <div className="cartitems-promobox flex items-center max-w-[504px] mt-[15px] pl-[20px] h-[58px] bg-[#eaeaea]">
+          <div className="rounded-lg overflow-hidden cartitems-promobox flex items-center max-w-[504px] mt-[15px] pl-[20px] h-[58px] bg-[#eaeaea]">
             <input
               className="border-none outline-none bg-transparent text-[14px] w-[330px] h-[50px]"
               type="text"
               placeholder="promo code"
             />
-            <button className="w-[170px] h-[58px] text-[14px] bg-black text-white cursor-pointer hover:text-[#adadad]">
+            <button className="w-[170px] h-[58px] rounded-lg text-[14px] bg-black text-white cursor-pointer hover:text-[#adadad]">
               Submit
             </button>
           </div>

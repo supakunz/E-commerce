@@ -1,6 +1,6 @@
 .offers-lastest-btn {
   transition: ease-in-out 0.2s;
-  border-radius: 13px;
+  @apply rounded-lg;
 }
 .offers-lastest-btn img {
   transition: ease-in-out 0.2s;

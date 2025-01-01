@@ -6,7 +6,7 @@ const ButtonStyle = ({ type }) => {
   return (
     <div className="btn">
       <button
-        className={`rounded-xl flex justify-center ${
+        className={`rounded-lg flex justify-center ${
           type == "Login"
             ? "bg-black"
             : type == "Admin"

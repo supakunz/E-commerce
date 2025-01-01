@@ -86,21 +86,21 @@ export default function Checkout() {
               className="mt-8 flex flex-col justify-start items-start w-full space-y-8 "
             >
               <input
-                className="px-2 focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
+                className="px-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
                 type="text"
                 name="firstname"
                 placeholder="First Name"
                 {...register("firstname")}
               />
               <input
-                className="px-2 focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
+                className="px-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
                 type="text"
                 name="lastname"
                 placeholder="Last Name"
                 {...register("lastname")}
               />
               <input
-                className="px-2 focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
+                className="px-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
                 type="text"
                 name="address"
                 placeholder="Address"
@@ -109,7 +109,7 @@ export default function Checkout() {
               <div className="flex justify-between flex-col sm:flex-row w-full items-start space-y-8 sm:space-y-0 sm:space-x-8">
                 <div className="w-full">
                   <select
-                    className={`shadow z-10 bg-white py-3 w-full text-gray-600 focus:outline-none`}
+                    className={`shadow z-10 rounded-md bg-white py-3 w-full text-gray-600 focus:outline-none`}
                     name="city"
                     {...register("city")}
                   >
@@ -136,7 +136,7 @@ export default function Checkout() {
                 </div>
                 <div className="relative w-full">
                   <select
-                    className={`shadow z-10 bg-white py-3 w-full text-gray-600 focus:outline-none`}
+                    className={`shadow z-10 rounded-md bg-white py-3 w-full text-gray-600 focus:outline-none`}
                     name="region"
                     {...register("region")}
                   >
@@ -165,7 +165,7 @@ export default function Checkout() {
               <div className="flex justify-between flex-col sm:flex-row w-full items-start space-y-8 sm:space-y-0 sm:space-x-8">
                 <div className="relative w-full">
                   <select
-                    className={`shadow absolute z-10 bg-white py-3 w-full text-gray-600 focus:outline-none`}
+                    className={`shadow rounded-md absolute z-10 bg-white py-3 w-full text-gray-600 focus:outline-none`}
                     name="country"
                     {...register("country")}
                   >
@@ -192,7 +192,7 @@ export default function Checkout() {
                 </div>
                 <div className="relative w-full">
                   <input
-                    className="focus:outline-none focus:ring-2 focus:ring-gray-500 px-2 border-b border-gray-200 leading-4 text-base placeholder-gray-600 pt-4 pb-3 w-full"
+                    className="focus:outline-none rounded-md focus:ring-2 focus:ring-gray-500 px-2 border-b border-gray-200 leading-4 text-base placeholder-gray-600 pt-4 pb-3 w-full"
                     type="text"
                     placeholder="Zip Code"
                     name="zip"
@@ -201,7 +201,7 @@ export default function Checkout() {
                 </div>
               </div>
               <input
-                className="focus:outline-none focus:ring-2 focus:ring-gray-500 px-2 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
+                className="focus:outline-none rounded-md focus:ring-2 focus:ring-gray-500 px-2 border-b border-gray-200 leading-4 text-base placeholder-gray-600 py-4 w-full"
                 type="text"
                 placeholder="Phone Number"
                 name="phone"
@@ -209,13 +209,13 @@ export default function Checkout() {
               />
               <button
                 type="submit"
-                className="focus:outline-none focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-black py-4 w-full md:w-4/12 lg:w-full text-white bg-gray-800"
+                className="focus:outline-none rounded-lg focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-black py-4 w-full md:w-4/12 lg:w-full text-white bg-gray-800"
               >
                 Proceed to payment
               </button>
             </form>
           </div>
-          <div className="flex flex-col justify-start items-start bg-gray-50 w-full p-6 md:p-14">
+          <div className="flex flex-col rounded-lg justify-start items-start bg-gray-50 w-full p-6 md:p-14">
             <div>
               <h1 className="text-2xl font-semibold leading-6 text-gray-800">
                 Order Summary

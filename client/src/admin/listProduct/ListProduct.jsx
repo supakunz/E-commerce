@@ -31,7 +31,7 @@ const ListProduct = () => {
                   <img
                     src={product.image}
                     alt=""
-                    className="listproduct-product-icon h-[80px] m-auto"
+                    className="listproduct-product-icon h-[80px] m-auto rounded-[0.3rem]"
                   />
                   <p>{product.name}</p>
                   <p>${product.old_price.toFixed(2)}</p>

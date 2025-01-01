@@ -18,7 +18,7 @@ const Input = (props) => {
     <div>
       <input
         {...register(name)}
-        className={`h-[62px] w-[100%] pl-[20px] outline-none text-[16px] text-[#5c5c5c] border-solid border-[1px] ${
+        className={`h-[62px] w-[100%] pl-[20px] outline-none rounded-lg text-[16px] text-[#5c5c5c] border-solid border-[1px] ${
           error ? "border-red-500" : "border-[#c9c9c9]"
         }`}
         name={name}
