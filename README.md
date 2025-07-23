@@ -6,11 +6,11 @@ A full-stack e-commerce application built with **ReactJS + TailwindCSS** on the 
 
 ##  🚀  Live Demo 
 
-🎥 Watch demo video:  
+🎥 Watch demo video :  
 
 [Demo Video](https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99)
 
-🌐 Try it live here:  
+🌐 Try it live here :  
 
 👉  [**Click here to open the app**](https://ecommercr.netlify.app)
 
