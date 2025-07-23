@@ -96,3 +96,10 @@ STRIPE_ENDPOINT_SECRET = <your_stripe_endpoint_secret>
 ```
 npm run dev
 ```
+
+## 🙋‍♂️ Contact
+
+Developed by **Supakun Thata**  
+📧 Email: supakunt.thata@gmail.com  
+🔗 GitHub: [SupakunZ](https://github.com/SupakunZ)
+
