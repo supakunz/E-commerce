@@ -4,10 +4,15 @@ A full-stack e-commerce application built with **ReactJS + TailwindCSS** on the 
 <img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/805b00d7-0434-4e92-b06d-212ea8e70977" />
 
 
-## 🍄 Live Demo 
-https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99
+##  🚀  Live Demo 
 
-👉  <a href='https://ecommercr.netlify.app' target="_blank">E-commerce</a>
+🎥 Watch demo video:  
+
+[Demo Video](https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99)
+
+🌐 Try it live here:  
+
+👉  [**Click here to open the app**](https://ecommercr.netlify.app)
 
 ## 🔥 Features
 
