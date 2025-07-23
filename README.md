@@ -1,24 +1,23 @@
 # E-commerce
-E-commerce Website is developed using ReactJS TailwindCSS for the client and NodeJS MongoDB for the server.
+A full-stack e-commerce application built with **ReactJS + TailwindCSS** on the frontend, and **NodeJS + MongoDB** on the backend.  
+Supports secure authentication, payment with Stripe, cloud image upload, and admin management.
 
 https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99
 
 ## 🍄 Live Demo 
-<a href='https://ecommercr.netlify.app' target="_blank">E-commerce</a>
+👉  <a href='https://ecommercr.netlify.app' target="_blank">E-commerce</a>
 
 ## 🔥 Features
 
-  <ul>
-      <li>A robust authentication system ensures user data is safeguarded and protected.</li>
-      <li>Includes a smooth scroll-to-top feature for effortless navigation and improved usability.</li>
-      <li>Supports secure and reliable payments via Stripe. Helps users to make transactions easily.</li>
-      <li>Access rights are carefully differentiated, providing distinct privileges for users and admins.</li>
-      <li>The website is fully responsive, adapting flawlessly to all devices, from desktops to smartphones.</li>
-      <li>Seamless access control is implemented via APIs, ensuring secure and efficient permission management.</li>
-      <li>An intuitive admin panel enables the addition, editing, and deletion of products and users with ease.</li>
-  </ul>
+- 🔐 Secure authentication system (with access roles for user/admin)
+- 🛒 Product listing with full CRUD (admin only)
+- 💳 Stripe payment integration
+- 🌤️ Image upload via Cloudinary
+- 📱 Fully responsive layout
+- ⬆️ Scroll-to-top and smooth navigation
+- ⚙️ RESTful APIs for frontend-backend interaction
 
-## 🍀 Technologyies Used
+## 🍀 Tech Stack
   <i>Frontend :</i>
   <ul>
       <li>ReactJS</li>
@@ -39,10 +38,10 @@ https://github.com/user-attachments/assets/253e24fb-e4ed-4512-b321-7451d238cf99
       <li>MongoDB</li>
   </ul>
 
-  <i>Platform :</i>
+  <i>External Services :</i>
   <ul>
-      <li>Stripe</li>
-      <li>Cloudinary</li>
+      <li>Stripe (payment)</li>
+      <li>Cloudinary (image storage)</li>
   </ul>
 
 
